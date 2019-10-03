@@ -40,4 +40,10 @@ image::placeholder_image.png[width="150", align="left"]
 {empty}[https://github.com/tanlk99[github]] [<<tanlikai#, portfolio>>]
 
 Role: Team Member
+
+=== Steven Wijaya
+image::placeholder_image.png[width="150", align="left"]
+{empty}[https://github.com/stevenwjy[github]] [<<steven#, portfolio>>]
+
+Role: Team Member
 =======
