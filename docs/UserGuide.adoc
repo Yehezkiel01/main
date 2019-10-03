@@ -222,3 +222,29 @@ Example:
 
 Disclaimer: Upload of image will be supported in v2.0
 Disclaimer: Partial editing will be supported in v2.0
+
+=== Tags a note: tag
+
+Tags a note with one or more tags.
+
+Format:
+
+`note tag NOTE_ID [--t TAG]+`
+
+Example:
+
+* `note tag 00002 --t #CS2103T --t #Duke --t @12300 --t %cs2103T`
+  Tags note with id 00002 with tag #CS2103T, #Duke and user with id @12300 and group %cs2103T
+
+=== Untags a note: untag
+
+Untags a note from one or more tags.
+
+Format:
+
+`note untag NOTE_ID [--t TAG]+`
+
+Example:
+
+* `note untag 00002 --t #CS2103T --t #Duke --t @12300 --t %cs2103T`
+  Untags note id 00002 with tag #CS2103T, #Duke and user with id @12300 and group %cs2103T
