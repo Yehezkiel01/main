@@ -190,6 +190,19 @@ Format:
 Example:
 
 * `note create --c Today I don’t feel like doing anything`
-  Adds a note with content “Today I don’t feel like doing anything”
+  Adds a note with content “Today I don’t feel like doing anything”.
 
 Disclaimer: Upload of image coming in v2.0
+
+=== Deletes a note: `delete`
+
+Deletes a note.
+
+Format:
+
+`note delete NOTE_ID`
+
+Example:
+
+* `note delete 00002`
+  Deletes note with id 00002.
