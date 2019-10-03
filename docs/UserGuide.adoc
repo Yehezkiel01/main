@@ -248,3 +248,44 @@ Example:
 
 * `note untag 00002 --t #CS2103T --t #Duke --t @12300 --t %cs2103T`
   Untags note id 00002 with tag #CS2103T, #Duke and user with id @12300 and group %cs2103T
+
+=== Filters notes: list
+
+Lists all notes in the application. Filters can be applied to show only notes related to certain keywords, hashtags, users or groups.
+
+Format:
+
+`note list [# / @ / %][FILTER]`
+
+Example:
+
+[cols=3*,options=header]
+|===
+|Format
+|Example
+|Outcome
+
+|`note list`
+|`note list`
+|Lists all notes.
+
+|`note list KEYWORD`
+|`note list meeting`
+|Lists all notes which contain the phrase “meeting”.
+
+|`note list #HASHTAG`
+|`note list #cs2100`
+|Lists all notes with the hashtag #cs2100.
+
+|`note list @CONTACTID`
+|`note list @12345`
+|Lists all notes tagged with the contact which ID is 12345.
+
+|`note list %GROUPNAME`
+|`note list %cs2103 team`
+|Lists all notes tagged with the group “cs2103 team”.
+|===
+
+Disclaimer: Filtering by multi tag will be supported in v2.0
+
+=== Sorts notes: sort (Coming in v2.0)
