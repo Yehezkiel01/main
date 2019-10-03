@@ -177,5 +177,19 @@ Examples:
 
   Then, if you answer "Y", the chatbot will clear all data in your contact list.
 
+== Managing your notes: `note`
 
+=== Create a note: `create`
 
+Creates a new note.
+
+Format:
+
+`note create --c CONTENT`
+
+Example:
+
+* `note create --c Today I don’t feel like doing anything`
+  Adds a note with content “Today I don’t feel like doing anything”
+
+Disclaimer: Upload of image coming in v2.0
