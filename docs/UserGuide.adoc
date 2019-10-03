@@ -192,7 +192,7 @@ Example:
 * `note create --c Today I don’t feel like doing anything`
   Adds a note with content “Today I don’t feel like doing anything”.
 
-Disclaimer: Upload of image coming in v2.0
+Disclaimer: Upload of image will be supported in v2.0
 
 === Deletes a note: `delete`
 
@@ -206,3 +206,19 @@ Example:
 
 * `note delete 00002`
   Deletes note with id 00002.
+
+=== Edits a note: `edit`
+
+Edits a saved note.
+
+Format:
+
+`note edit NOTE_ID --c NEW_CONTENT`
+
+Example:
+
+* `note edit 00002 --c Today I don’t feel like doing anything`
+  Replaces the content of the note which id is 2 with “Today I don’t feel like doing anything.”
+
+Disclaimer: Upload of image will be supported in v2.0
+Disclaimer: Partial editing will be supported in v2.0
