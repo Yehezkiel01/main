@@ -1,7 +1,7 @@
 package tagline.logic.commands.contact;
 
 import static java.util.Objects.requireNonNull;
-import static tagline.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static tagline.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
 import tagline.logic.commands.CommandResult;
 import tagline.model.Model;
@@ -19,7 +19,7 @@ public class ListContactCommand extends ContactCommand {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredContactList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

@@ -3,7 +3,7 @@ package tagline.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static tagline.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+import static tagline.commons.core.Messages.MESSAGE_CONTACTS_LISTED_OVERVIEW;
 import static tagline.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static tagline.testutil.TypicalContacts.CARL;
 import static tagline.testutil.TypicalContacts.ELLE;
@@ -57,7 +57,7 @@ public class FindContactCommandTest {
 
     @Test
     public void execute_zeroKeywords_noContactFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String expectedMessage = String.format(MESSAGE_CONTACTS_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindContactCommand command = new FindContactCommand(predicate);
         expectedModel.updateFilteredContactList(predicate);
@@ -67,7 +67,7 @@ public class FindContactCommandTest {
 
     @Test
     public void execute_multipleKeywords_multipleContactsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
+        String expectedMessage = String.format(MESSAGE_CONTACTS_LISTED_OVERVIEW, 3);
         NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
         FindContactCommand command = new FindContactCommand(predicate);
         expectedModel.updateFilteredContactList(predicate);

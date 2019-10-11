@@ -35,7 +35,7 @@ public class CreateContactCommand extends ContactCommand {
             + PREFIX_DESCRIPTION + "CS2103 teammate";
 
     public static final String MESSAGE_SUCCESS = "New contact added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This contact already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists in the address book";
 
     private final Contact toAdd;
 
@@ -52,7 +52,7 @@ public class CreateContactCommand extends ContactCommand {
         requireNonNull(model);
 
         if (model.hasContact(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_CONTACT);
         }
 
         model.addContact(toAdd);
