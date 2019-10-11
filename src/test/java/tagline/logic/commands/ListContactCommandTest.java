@@ -1,9 +1,9 @@
 package tagline.logic.commands;
 
 import static tagline.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static tagline.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static tagline.logic.commands.CommandTestUtil.showContactAtIndex;
+import static tagline.testutil.TypicalContacts.getTypicalAddressBook;
 import static tagline.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static tagline.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ public class ListContactCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+        showContactAtIndex(model, INDEX_FIRST_PERSON);
         assertCommandSuccess(new ListContactCommand(), model, ListContactCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

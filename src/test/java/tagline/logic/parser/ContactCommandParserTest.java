@@ -16,16 +16,16 @@ import tagline.logic.commands.contact.ClearContactCommand;
 import tagline.logic.commands.contact.CreateContactCommand;
 import tagline.logic.commands.contact.DeleteContactCommand;
 import tagline.logic.commands.contact.EditContactCommand;
-import tagline.logic.commands.contact.EditContactCommand.EditPersonDescriptor;
+import tagline.logic.commands.contact.EditContactCommand.EditContactDescriptor;
 import tagline.logic.commands.contact.FindContactCommand;
 import tagline.logic.commands.contact.ListContactCommand;
 import tagline.logic.parser.contact.ContactCommandParser;
 import tagline.logic.parser.exceptions.ParseException;
-import tagline.model.person.NameContainsKeywordsPredicate;
-import tagline.model.person.Person;
-import tagline.testutil.EditPersonDescriptorBuilder;
-import tagline.testutil.PersonBuilder;
-import tagline.testutil.PersonUtil;
+import tagline.model.contact.Contact;
+import tagline.model.contact.NameContainsKeywordsPredicate;
+import tagline.testutil.ContactBuilder;
+import tagline.testutil.ContactUtil;
+import tagline.testutil.EditContactDescriptorBuilder;
 
 public class ContactCommandParserTest {
 
@@ -33,8 +33,8 @@ public class ContactCommandParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
-        CreateContactCommand command = (CreateContactCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
+        Contact person = new ContactBuilder().build();
+        CreateContactCommand command = (CreateContactCommand) parser.parseCommand(ContactUtil.getAddCommand(person));
         assertEquals(new CreateContactCommand(person), command);
     }
 
@@ -53,10 +53,10 @@ public class ContactCommandParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
+        Contact person = new ContactBuilder().build();
+        EditContactDescriptor descriptor = new EditContactDescriptorBuilder(person).build();
         EditContactCommand command = (EditContactCommand) parser.parseCommand(EditContactCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+                + INDEX_FIRST_PERSON.getOneBased() + " " + ContactUtil.getEditContactDescriptorDetails(descriptor));
         assertEquals(new EditContactCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
