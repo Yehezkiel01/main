@@ -23,15 +23,15 @@ public class EditContactDescriptorBuilder {
     }
 
     /**
-     * Returns an {@code EditContactDescriptor} with fields containing {@code person}'s details
+     * Returns an {@code EditContactDescriptor} with fields containing {@code contact}'s details
      */
-    public EditContactDescriptorBuilder(Contact person) {
+    public EditContactDescriptorBuilder(Contact contact) {
         descriptor = new EditContactDescriptor();
-        descriptor.setName(person.getName());
-        descriptor.setPhone(person.getPhone());
-        descriptor.setEmail(person.getEmail());
-        descriptor.setAddress(person.getAddress());
-        descriptor.setDescription(person.getDescription());
+        descriptor.setName(contact.getName());
+        descriptor.setPhone(contact.getPhone());
+        descriptor.setEmail(contact.getEmail());
+        descriptor.setAddress(contact.getAddress());
+        descriptor.setDescription(contact.getDescription());
     }
 
     /**

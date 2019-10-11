@@ -25,15 +25,15 @@ import tagline.model.contact.Name;
 import tagline.model.contact.Phone;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing contact in the address book.
  */
 public class EditContactCommand extends ContactCommand {
 
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_KEY + " " + COMMAND_WORD
-            + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+            + ": Edits the details of the contact identified "
+            + "by the index number used in the displayed contact list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
@@ -47,14 +47,14 @@ public class EditContactCommand extends ContactCommand {
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Contact: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This contact already exists in the address book.";
 
     private final Index index;
     private final EditContactDescriptor editContactDescriptor;
 
     /**
-     * @param index                of the person in the filtered person list to edit
-     * @param editContactDescriptor details to edit the person with
+     * @param index                of the contact in the filtered contact list to edit
+     * @param editContactDescriptor details to edit the contact with
      */
     public EditContactCommand(Index index, EditContactDescriptor editContactDescriptor) {
         requireNonNull(index);
@@ -65,17 +65,17 @@ public class EditContactCommand extends ContactCommand {
     }
 
     /**
-     * Creates and returns a {@code Contact} with the details of {@code personToEdit}
+     * Creates and returns a {@code Contact} with the details of {@code contactToEdit}
      * edited with {@code editContactDescriptor}.
      */
-    private static Contact createEditedContact(Contact personToEdit, EditContactDescriptor editContactDescriptor) {
-        assert personToEdit != null;
+    private static Contact createEditedContact(Contact contactToEdit, EditContactDescriptor editContactDescriptor) {
+        assert contactToEdit != null;
 
-        Name updatedName = editContactDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editContactDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editContactDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = editContactDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Description updatedDescription = editContactDescriptor.getDescription().orElse(personToEdit.getDescription());
+        Name updatedName = editContactDescriptor.getName().orElse(contactToEdit.getName());
+        Phone updatedPhone = editContactDescriptor.getPhone().orElse(contactToEdit.getPhone());
+        Email updatedEmail = editContactDescriptor.getEmail().orElse(contactToEdit.getEmail());
+        Address updatedAddress = editContactDescriptor.getAddress().orElse(contactToEdit.getAddress());
+        Description updatedDescription = editContactDescriptor.getDescription().orElse(contactToEdit.getDescription());
 
         return new Contact(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedDescription);
     }
@@ -89,14 +89,14 @@ public class EditContactCommand extends ContactCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Contact personToEdit = lastShownList.get(index.getZeroBased());
-        Contact editedContact = createEditedContact(personToEdit, editContactDescriptor);
+        Contact contactToEdit = lastShownList.get(index.getZeroBased());
+        Contact editedContact = createEditedContact(contactToEdit, editContactDescriptor);
 
-        if (!personToEdit.isSameContact(editedContact) && model.hasContact(editedContact)) {
+        if (!contactToEdit.isSameContact(editedContact) && model.hasContact(editedContact)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setContact(personToEdit, editedContact);
+        model.setContact(contactToEdit, editedContact);
         model.updateFilteredContactList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedContact));
     }
@@ -120,8 +120,8 @@ public class EditContactCommand extends ContactCommand {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the contact with. Each non-empty field value will replace the
+     * corresponding field value of the contact.
      */
     public static class EditContactDescriptor {
         private Name name;

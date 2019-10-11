@@ -25,7 +25,7 @@ class JsonAdaptedContact {
     private final String description;
 
     /**
-     * Constructs a {@code JsonAdaptedContact} with the given person details.
+     * Constructs a {@code JsonAdaptedContact} with the given contact details.
      */
     @JsonCreator
     public JsonAdaptedContact(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
@@ -51,9 +51,9 @@ class JsonAdaptedContact {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Contact} object.
+     * Converts this Jackson-friendly adapted contact object into the model's {@code Contact} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted contact.
      */
     public Contact toModelType() throws IllegalValueException {
         if (name == null) {

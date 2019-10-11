@@ -7,13 +7,13 @@ import tagline.logic.commands.CommandResult;
 import tagline.model.Model;
 
 /**
- * Lists all persons in the address book to the user.
+ * Lists all contacts in the address book to the user.
  */
 public class ListContactCommand extends ContactCommand {
 
     public static final String COMMAND_WORD = "list";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons";
+    public static final String MESSAGE_SUCCESS = "Listed all contacts";
 
 
     @Override

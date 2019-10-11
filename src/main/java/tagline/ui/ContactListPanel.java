@@ -11,19 +11,19 @@ import tagline.commons.core.LogsCenter;
 import tagline.model.contact.Contact;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of contacts.
  */
 public class ContactListPanel extends UiPart<Region> {
     private static final String FXML = "ContactListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ContactListPanel.class);
 
     @FXML
-    private ListView<Contact> personListView;
+    private ListView<Contact> contactListView;
 
-    public ContactListPanel(ObservableList<Contact> personList) {
+    public ContactListPanel(ObservableList<Contact> contactList) {
         super(FXML);
-        personListView.setItems(personList);
-        personListView.setCellFactory(listView -> new ContactListViewCell());
+        contactListView.setItems(contactList);
+        contactListView.setCellFactory(listView -> new ContactListViewCell());
     }
 
     /**
@@ -31,14 +31,14 @@ public class ContactListPanel extends UiPart<Region> {
      */
     class ContactListViewCell extends ListCell<Contact> {
         @Override
-        protected void updateItem(Contact person, boolean empty) {
-            super.updateItem(person, empty);
+        protected void updateItem(Contact contact, boolean empty) {
+            super.updateItem(contact, empty);
 
-            if (empty || person == null) {
+            if (empty || contact == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ContactCard(person, getIndex() + 1).getRoot());
+                setGraphic(new ContactCard(contact, getIndex() + 1).getRoot());
             }
         }
     }

@@ -23,7 +23,7 @@ public class ContactCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Contact person;
+    public final Contact contact;
 
     @FXML
     private HBox cardPane;
@@ -40,14 +40,14 @@ public class ContactCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-    public ContactCard(Contact person, int displayedIndex) {
+    public ContactCard(Contact contact, int displayedIndex) {
         super(FXML);
-        this.person = person;
+        this.contact = contact;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
+        name.setText(contact.getName().fullName);
+        phone.setText(contact.getPhone().value);
+        address.setText(contact.getAddress().value);
+        email.setText(contact.getEmail().value);
     }
 
     @Override
@@ -65,6 +65,6 @@ public class ContactCard extends UiPart<Region> {
         // state check
         ContactCard card = (ContactCard) other;
         return id.getText().equals(card.id.getText())
-                && person.equals(card.person);
+                && contact.equals(card.contact);
     }
 }

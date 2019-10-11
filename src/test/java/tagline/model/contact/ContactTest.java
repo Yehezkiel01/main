@@ -61,7 +61,7 @@ public class ContactTest {
         // different type -> returns false
         assertFalse(ALICE.equals(5));
 
-        // different person -> returns false
+        // different contact -> returns false
         assertFalse(ALICE.equals(BOB));
 
         // different name -> returns false

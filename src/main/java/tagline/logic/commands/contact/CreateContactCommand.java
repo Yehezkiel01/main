@@ -13,14 +13,14 @@ import tagline.model.Model;
 import tagline.model.contact.Contact;
 
 /**
- * Adds a person to the address book.
+ * Adds a contact to the address book.
  */
 public class CreateContactCommand extends ContactCommand {
 
     public static final String COMMAND_WORD = "create";
 
     public static final String MESSAGE_USAGE = COMMAND_KEY + " " + COMMAND_WORD
-            + ": Adds a person to the address book. "
+            + ": Adds a contact to the address book. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + "[" + PREFIX_PHONE + "PHONE] "
@@ -34,17 +34,17 @@ public class CreateContactCommand extends ContactCommand {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_DESCRIPTION + "CS2103 teammate";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "New contact added: %1$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This contact already exists in the address book";
 
     private final Contact toAdd;
 
     /**
      * Creates an CreateContactCommand to add the specified {@code Contact}
      */
-    public CreateContactCommand(Contact person) {
-        requireNonNull(person);
-        toAdd = person;
+    public CreateContactCommand(Contact contact) {
+        requireNonNull(contact);
+        toAdd = contact;
     }
 
     @Override

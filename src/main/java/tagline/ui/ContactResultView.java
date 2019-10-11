@@ -12,10 +12,10 @@ public class ContactResultView extends ResultView {
 
     private static final String FXML = "ContactResultView.fxml";
 
-    private ContactListPanel personListPanel;
+    private ContactListPanel contactListPanel;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane contactListPanelPlaceholder;
 
     public ContactResultView() {
         super(FXML);
@@ -24,8 +24,8 @@ public class ContactResultView extends ResultView {
     /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerParts(ObservableList<Contact> personList) {
-        personListPanel = new ContactListPanel(personList);
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    void fillInnerParts(ObservableList<Contact> contactList) {
+        contactListPanel = new ContactListPanel(contactList);
+        contactListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
     }
 }

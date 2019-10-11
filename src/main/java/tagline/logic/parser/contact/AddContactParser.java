@@ -73,9 +73,9 @@ public class AddContactParser implements Parser<CreateContactCommand> {
             description = ContactParserUtil.parseDescription("");
         }
 
-        Contact person = new Contact(name, phone, email, address, description);
+        Contact contact = new Contact(name, phone, email, address, description);
 
-        return new CreateContactCommand(person);
+        return new CreateContactCommand(contact);
     }
 
     /**

@@ -33,7 +33,7 @@ public class CreateContactCommandTest {
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
+    public void execute_contactAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingContactAdded modelStub = new ModelStubAcceptingContactAdded();
         Contact validContact = new ContactBuilder().build();
 
@@ -41,7 +41,7 @@ public class CreateContactCommandTest {
 
         assertEquals(String.format(CreateContactCommand.MESSAGE_SUCCESS, validContact),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validContact), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validContact), modelStub.contactsAdded);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class CreateContactCommandTest {
         // null -> returns false
         assertFalse(addAliceCommand.equals(null));
 
-        // different person -> returns false
+        // different contact -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
@@ -113,7 +113,7 @@ public class CreateContactCommandTest {
         }
 
         @Override
-        public void addContact(Contact person) {
+        public void addContact(Contact contact) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -128,7 +128,7 @@ public class CreateContactCommandTest {
         }
 
         @Override
-        public boolean hasContact(Contact person) {
+        public boolean hasContact(Contact contact) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -154,39 +154,39 @@ public class CreateContactCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single contact.
      */
     private class ModelStubWithContact extends ModelStub {
-        private final Contact person;
+        private final Contact contact;
 
-        ModelStubWithContact(Contact person) {
-            requireNonNull(person);
-            this.person = person;
+        ModelStubWithContact(Contact contact) {
+            requireNonNull(contact);
+            this.contact = contact;
         }
 
         @Override
-        public boolean hasContact(Contact person) {
-            requireNonNull(person);
-            return this.person.isSameContact(person);
+        public boolean hasContact(Contact contact) {
+            requireNonNull(contact);
+            return this.contact.isSameContact(contact);
         }
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the contact being added.
      */
     private class ModelStubAcceptingContactAdded extends ModelStub {
-        final ArrayList<Contact> personsAdded = new ArrayList<>();
+        final ArrayList<Contact> contactsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasContact(Contact person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSameContact);
+        public boolean hasContact(Contact contact) {
+            requireNonNull(contact);
+            return contactsAdded.stream().anyMatch(contact::isSameContact);
         }
 
         @Override
-        public void addContact(Contact person) {
-            requireNonNull(person);
-            personsAdded.add(person);
+        public void addContact(Contact contact) {
+            requireNonNull(contact);
+            contactsAdded.add(contact);
         }
 
         @Override

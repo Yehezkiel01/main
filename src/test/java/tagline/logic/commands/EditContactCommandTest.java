@@ -55,8 +55,8 @@ public class EditContactCommandTest {
         Index indexLastContact = Index.fromOneBased(model.getFilteredContactList().size());
         Contact lastContact = model.getFilteredContactList().get(indexLastContact.getZeroBased());
 
-        ContactBuilder personInList = new ContactBuilder(lastContact);
-        Contact editedContact = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+        ContactBuilder contactInList = new ContactBuilder(lastContact);
+        Contact editedContact = contactInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
                 .build();
 
         EditContactDescriptor descriptor = new EditContactDescriptorBuilder().withName(VALID_NAME_BOB)
@@ -87,8 +87,8 @@ public class EditContactCommandTest {
     public void execute_filteredList_success() {
         showContactAtIndex(model, INDEX_FIRST_PERSON);
 
-        Contact personInFilteredList = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Contact editedContact = new ContactBuilder(personInFilteredList).withName(VALID_NAME_BOB).build();
+        Contact contactInFilteredList = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Contact editedContact = new ContactBuilder(contactInFilteredList).withName(VALID_NAME_BOB).build();
         EditContactCommand editContactCommand = new EditContactCommand(INDEX_FIRST_PERSON,
                 new EditContactDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
@@ -113,10 +113,10 @@ public class EditContactCommandTest {
     public void execute_duplicateContactFilteredList_failure() {
         showContactAtIndex(model, INDEX_FIRST_PERSON);
 
-        // edit person in filtered list into a duplicate in address book
-        Contact personInList = model.getAddressBook().getContactList().get(INDEX_SECOND_PERSON.getZeroBased());
+        // edit contact in filtered list into a duplicate in address book
+        Contact contactInList = model.getAddressBook().getContactList().get(INDEX_SECOND_PERSON.getZeroBased());
         EditContactCommand editContactCommand = new EditContactCommand(INDEX_FIRST_PERSON,
-                new EditContactDescriptorBuilder(personInList).build());
+                new EditContactDescriptorBuilder(contactInList).build());
 
         assertCommandFailure(editContactCommand, model, EditContactCommand.MESSAGE_DUPLICATE_PERSON);
     }

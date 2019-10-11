@@ -29,13 +29,13 @@ public class DeleteContactCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Contact personToDelete = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Contact contactToDelete = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
         DeleteContactCommand deleteContactCommand = new DeleteContactCommand(INDEX_FIRST_PERSON);
 
-        String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
+        String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_PERSON_SUCCESS, contactToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.deleteContact(personToDelete);
+        expectedModel.deleteContact(contactToDelete);
 
         assertCommandSuccess(deleteContactCommand, model, expectedMessage, expectedModel);
     }
@@ -52,13 +52,13 @@ public class DeleteContactCommandTest {
     public void execute_validIndexFilteredList_success() {
         showContactAtIndex(model, INDEX_FIRST_PERSON);
 
-        Contact personToDelete = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Contact contactToDelete = model.getFilteredContactList().get(INDEX_FIRST_PERSON.getZeroBased());
         DeleteContactCommand deleteContactCommand = new DeleteContactCommand(INDEX_FIRST_PERSON);
 
-        String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
+        String expectedMessage = String.format(DeleteContactCommand.MESSAGE_DELETE_PERSON_SUCCESS, contactToDelete);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.deleteContact(personToDelete);
+        expectedModel.deleteContact(contactToDelete);
         showNoContact(expectedModel);
 
         assertCommandSuccess(deleteContactCommand, model, expectedMessage, expectedModel);
@@ -95,7 +95,7 @@ public class DeleteContactCommandTest {
         // null -> returns false
         assertFalse(deleteFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different contact -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 

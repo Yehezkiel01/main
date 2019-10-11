@@ -89,9 +89,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasContact(Contact person) {
-        requireNonNull(person);
-        return addressBook.hasContact(person);
+    public boolean hasContact(Contact contact) {
+        requireNonNull(contact);
+        return addressBook.hasContact(contact);
     }
 
     @Override
@@ -100,8 +100,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addContact(Contact person) {
-        addressBook.addContact(person);
+    public void addContact(Contact contact) {
+        addressBook.addContact(contact);
         updateFilteredContactList(PREDICATE_SHOW_ALL_PERSONS);
     }
 

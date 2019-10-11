@@ -28,18 +28,18 @@ public class UniqueContactListTest {
     }
 
     @Test
-    public void contains_personNotInList_returnsFalse() {
+    public void contains_contactNotInList_returnsFalse() {
         assertFalse(uniqueContactList.contains(ALICE));
     }
 
     @Test
-    public void contains_personInList_returnsTrue() {
+    public void contains_contactInList_returnsTrue() {
         uniqueContactList.add(ALICE);
         assertTrue(uniqueContactList.contains(ALICE));
     }
 
     @Test
-    public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
+    public void contains_contactWithSameIdentityFieldsInList_returnsTrue() {
         uniqueContactList.add(ALICE);
         Contact editedAlice = new ContactBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .build();
@@ -114,7 +114,7 @@ public class UniqueContactListTest {
     }
 
     @Test
-    public void remove_personDoesNotExist_throwsContactNotFoundException() {
+    public void remove_contactDoesNotExist_throwsContactNotFoundException() {
         assertThrows(ContactNotFoundException.class, () -> uniqueContactList.remove(ALICE));
     }
 
@@ -148,8 +148,8 @@ public class UniqueContactListTest {
     @Test
     public void setContacts_list_replacesOwnListWithProvidedList() {
         uniqueContactList.add(ALICE);
-        List<Contact> personList = Collections.singletonList(BOB);
-        uniqueContactList.setContacts(personList);
+        List<Contact> contactList = Collections.singletonList(BOB);
+        uniqueContactList.setContacts(contactList);
         UniqueContactList expectedUniqueContactList = new UniqueContactList();
         expectedUniqueContactList.add(BOB);
         assertEquals(expectedUniqueContactList, uniqueContactList);

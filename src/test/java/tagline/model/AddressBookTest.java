@@ -45,7 +45,7 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withDuplicateContacts_throwsDuplicateContactException() {
-        // Two persons with the same identity fields
+        // Two contacts with the same identity fields
         Contact editedAlice = new ContactBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .build();
         List<Contact> newContacts = Arrays.asList(ALICE, editedAlice);
@@ -60,18 +60,18 @@ public class AddressBookTest {
     }
 
     @Test
-    public void hasContact_personNotInAddressBook_returnsFalse() {
+    public void hasContact_contactNotInAddressBook_returnsFalse() {
         assertFalse(addressBook.hasContact(ALICE));
     }
 
     @Test
-    public void hasContact_personInAddressBook_returnsTrue() {
+    public void hasContact_contactInAddressBook_returnsTrue() {
         addressBook.addContact(ALICE);
         assertTrue(addressBook.hasContact(ALICE));
     }
 
     @Test
-    public void hasContact_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasContact_contactWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addContact(ALICE);
         Contact editedAlice = new ContactBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .build();
@@ -84,18 +84,18 @@ public class AddressBookTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyAddressBook whose contacts list can violate interface constraints.
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
-        private final ObservableList<Contact> persons = FXCollections.observableArrayList();
+        private final ObservableList<Contact> contacts = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Contact> persons) {
-            this.persons.setAll(persons);
+        AddressBookStub(Collection<Contact> contacts) {
+            this.contacts.setAll(contacts);
         }
 
         @Override
         public ObservableList<Contact> getContactList() {
-            return persons;
+            return contacts;
         }
     }
 

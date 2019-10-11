@@ -33,14 +33,14 @@ public class ContactBuilder {
     }
 
     /**
-     * Initializes the ContactBuilder with the data of {@code personToCopy}.
+     * Initializes the ContactBuilder with the data of {@code contactToCopy}.
      */
-    public ContactBuilder(Contact personToCopy) {
-        name = personToCopy.getName();
-        phone = personToCopy.getPhone();
-        email = personToCopy.getEmail();
-        address = personToCopy.getAddress();
-        description = personToCopy.getDescription();
+    public ContactBuilder(Contact contactToCopy) {
+        name = contactToCopy.getName();
+        phone = contactToCopy.getPhone();
+        email = contactToCopy.getEmail();
+        address = contactToCopy.getAddress();
+        description = contactToCopy.getDescription();
     }
 
     /**

@@ -59,12 +59,12 @@ public class TypicalContacts {
     } // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code AddressBook} with all the typical contacts.
      */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
-        for (Contact person : getTypicalContacts()) {
-            ab.addContact(person);
+        for (Contact contact : getTypicalContacts()) {
+            ab.addContact(contact);
         }
         return ab;
     }

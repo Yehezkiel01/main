@@ -33,9 +33,9 @@ public class ContactCommandParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Contact person = new ContactBuilder().build();
-        CreateContactCommand command = (CreateContactCommand) parser.parseCommand(ContactUtil.getAddCommand(person));
-        assertEquals(new CreateContactCommand(person), command);
+        Contact contact = new ContactBuilder().build();
+        CreateContactCommand command = (CreateContactCommand) parser.parseCommand(ContactUtil.getAddCommand(contact));
+        assertEquals(new CreateContactCommand(contact), command);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class ContactCommandParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Contact person = new ContactBuilder().build();
-        EditContactDescriptor descriptor = new EditContactDescriptorBuilder(person).build();
+        Contact contact = new ContactBuilder().build();
+        EditContactDescriptor descriptor = new EditContactDescriptorBuilder(contact).build();
         EditContactCommand command = (EditContactCommand) parser.parseCommand(EditContactCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + ContactUtil.getEditContactDescriptorDetails(descriptor));
         assertEquals(new EditContactCommand(INDEX_FIRST_PERSON, descriptor), command);
