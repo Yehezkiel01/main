@@ -3,8 +3,8 @@ package tagline.model.contact;
 import static java.util.Objects.requireNonNull;
 import static tagline.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.function.Predicate;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -60,13 +60,17 @@ public class ContactManager implements ContactModel {
         addressBook.setContact(target, editedContact);
     }
 
+    /**
+     * Generate a random unique Id.
+     * @return a random unique Id.
+     */
     private Id generateUniqueId() {
         // If the number of contacts has started to fill up the current digit.
         if (addressBook.size() >= Math.pow(10, Id.getDigit()) / 2) {
             Id.incrementDigit();
         }
 
-        int limit = Math.pow(10, Id.getDigit());
+        int limit = (int) Math.pow(10, Id.getDigit());
         int randomId = ThreadLocalRandom.current().nextInt(limit);
         while (addressBook.findContact(randomId).isPresent()) {
             randomId = ThreadLocalRandom.current().nextInt(limit);
