@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static tagline.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.function.Predicate;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -48,6 +49,7 @@ public class ContactManager implements ContactModel {
 
     @Override
     public void addContact(Contact contact) {
+        contact.setId(generateUniqueId());
         addressBook.addContact(contact);
         updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
     }
@@ -56,6 +58,21 @@ public class ContactManager implements ContactModel {
     public void setContact(Contact target, Contact editedContact) {
         requireAllNonNull(target, editedContact);
         addressBook.setContact(target, editedContact);
+    }
+
+    private Id generateUniqueId() {
+        // If the number of contacts has started to fill up the current digit.
+        if (addressBook.size() >= Math.pow(10, Id.getDigit()) / 2) {
+            Id.incrementDigit();
+        }
+
+        int limit = Math.pow(10, Id.getDigit());
+        int randomId = ThreadLocalRandom.current().nextInt(limit);
+        while (addressBook.findContact(randomId).isPresent()) {
+            randomId = ThreadLocalRandom.current().nextInt(limit);
+        }
+
+        return new Id(randomId);
     }
 
     //=========== Filtered Contact List Accessors =============================================================
