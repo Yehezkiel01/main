@@ -14,6 +14,7 @@ public class Contact {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private Id id;
 
     // Data fields
     private final Address address;
@@ -49,6 +50,14 @@ public class Contact {
 
     public Description getDescription() {
         return description;
+    }
+
+    public Id getId() {
+        return id;
+    }
+
+    void setId(Id id) {
+        this.id = id;
     }
 
     /**
