@@ -5,6 +5,7 @@ import static tagline.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,6 +37,25 @@ public class UniqueContactList implements Iterable<Contact> {
     public boolean contains(Contact toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameContact);
+    }
+
+    public Optional<Contact> findContact(int id) {
+        var it = iterator();
+        while (it.hasNext()) {
+            Contact currentContact = it.next();
+            if (currentContact.getId().equals(id)) {
+                return Optional.of(currentContact);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public Optional<Contact> findContact(Id id) {
+        return findContact(id.toInteger());
+    }
+
+    public int size() {
+        return internalList.size();
     }
 
     /**

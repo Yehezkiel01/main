@@ -3,9 +3,11 @@ package tagline.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import tagline.model.contact.Contact;
+import tagline.model.contact.Id;
 import tagline.model.contact.UniqueContactList;
 
 /**
@@ -95,7 +97,22 @@ public class AddressBook implements ReadOnlyAddressBook {
         contacts.remove(key);
     }
 
+    public Optional<Contact> findContact(int id) {
+        return contacts.findContact(id);
+    }
+
+    public Optional<Contact> findContact(Id id) {
+        return contacts.findContact(id);
+    }
     //// util methods
+
+    /**
+     * Return the number of contacts in AddressBook.
+     * @return the number of contacts.
+     */
+    public int size() {
+        return contacts.size();
+    }
 
     @Override
     public String toString() {
