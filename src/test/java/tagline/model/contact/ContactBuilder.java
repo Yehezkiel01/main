@@ -95,7 +95,7 @@ public class ContactBuilder {
      */
     public Contact build() {
         Contact contact = new Contact(name, phone, email, address, description);
-        contact.setId(new Id(DEFAULT_ID));
+        contact.setId(id);
         return contact;
     }
 
