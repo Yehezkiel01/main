@@ -8,6 +8,7 @@ import tagline.model.contact.Address;
 import tagline.model.contact.Contact;
 import tagline.model.contact.Description;
 import tagline.model.contact.Email;
+import tagline.model.contact.Id;
 import tagline.model.contact.Name;
 import tagline.model.contact.Phone;
 
@@ -23,6 +24,7 @@ class JsonAdaptedContact {
     private final String email;
     private final String address;
     private final String description;
+    private final String id;
 
     /**
      * Constructs a {@code JsonAdaptedContact} with the given contact details.
@@ -30,13 +32,14 @@ class JsonAdaptedContact {
     @JsonCreator
     public JsonAdaptedContact(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                              @JsonProperty("email") String email, @JsonProperty("address") String address,
-                             @JsonProperty("desciption") String description) {
+                             @JsonProperty("desciption") String description, @JsonProperty("id") String id) {
 
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.description = description;
+        this.id = id;
     }
 
     /**
@@ -48,6 +51,7 @@ class JsonAdaptedContact {
         email = source.getEmail().value;
         address = source.getAddress().value;
         description = source.getDescription().value;
+        id = source.getId().toString();
     }
 
     /**
@@ -96,8 +100,11 @@ class JsonAdaptedContact {
             throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
         final Description modelDescription = new Description(description);
+        if (!Id.isValidId(id)) {
+            throw new IllegalValueException(Id.MESSAGE_CONSTRAINTS);
+        }
+        final Id modelId = new Id(id);
 
-        return new Contact(modelName, modelPhone, modelEmail, modelAddress, modelDescription);
+        return new Contact(modelName, modelPhone, modelEmail, modelAddress, modelDescription, modelId);
     }
-
 }

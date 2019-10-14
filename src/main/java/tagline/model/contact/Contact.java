@@ -32,6 +32,21 @@ public class Contact {
         this.description = description;
     }
 
+    /**
+     * Construct a contact with id.
+     * Ensure that the id is unique among all other contact.
+     * Warning: This constructor should only be used by storage.
+     */
+    public Contact(Name name, Phone phone, Email email, Address address, Description description, Id id) {
+        requireAllNonNull(name, phone, email, address, description);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.description = description;
+        this.id = id;
+    }
+
     public Name getName() {
         return name;
     }
