@@ -19,11 +19,11 @@ import tagline.commons.core.GuiSettings;
 import tagline.logic.commands.contact.CreateContactCommand;
 import tagline.logic.commands.exceptions.CommandException;
 import tagline.model.Model;
-import tagline.model.ReadOnlyAddressBook;
 import tagline.model.ReadOnlyUserPrefs;
 import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactBuilder;
+import tagline.model.contact.ReadOnlyAddressBook;
 
 public class CreateContactCommandTest {
 

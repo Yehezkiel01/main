@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javafx.collections.ObservableList;
-import tagline.model.ReadOnlyAddressBook;
 
 /**
  * Wraps all data at the address-book level

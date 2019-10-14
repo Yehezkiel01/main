@@ -14,6 +14,7 @@ import tagline.commons.core.LogsCenter;
 import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactManager;
+import tagline.model.contact.ReadOnlyAddressBook;
 
 /**
  * Represents the in-memory model of the address book data.

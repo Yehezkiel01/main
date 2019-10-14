@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import tagline.model.ReadOnlyAddressBook;
 
 /**
  * The API of the ContactModel component.

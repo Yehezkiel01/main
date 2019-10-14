@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import tagline.model.ReadOnlyAddressBook;
 import tagline.model.contact.Address;
 import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
@@ -12,6 +11,7 @@ import tagline.model.contact.Description;
 import tagline.model.contact.Email;
 import tagline.model.contact.Name;
 import tagline.model.contact.Phone;
+import tagline.model.contact.ReadOnlyAddressBook;
 import tagline.model.tag.Tag;
 
 /**
