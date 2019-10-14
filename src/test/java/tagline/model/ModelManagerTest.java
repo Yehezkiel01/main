@@ -15,6 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import tagline.commons.core.GuiSettings;
+import tagline.model.contact.AddressBook;
 import tagline.model.contact.NameContainsKeywordsPredicate;
 import tagline.testutil.AddressBookBuilder;
 

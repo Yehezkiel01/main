@@ -1,4 +1,4 @@
-package tagline.model;
+package tagline.model.contact;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -17,8 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import tagline.model.contact.Contact;
-import tagline.model.contact.ContactBuilder;
+import tagline.model.ReadOnlyAddressBook;
 import tagline.model.contact.exceptions.DuplicateContactException;
 
 public class AddressBookTest {

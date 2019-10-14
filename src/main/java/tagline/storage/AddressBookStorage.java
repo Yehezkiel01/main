@@ -6,9 +6,10 @@ import java.util.Optional;
 
 import tagline.commons.exceptions.DataConversionException;
 import tagline.model.ReadOnlyAddressBook;
+import tagline.model.contact.AddressBook;
 
 /**
- * Represents a storage for {@link tagline.model.AddressBook}.
+ * Represents a storage for {@link AddressBook}.
  */
 public interface AddressBookStorage {
 

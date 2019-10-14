@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import tagline.commons.exceptions.DataConversionException;
-import tagline.model.AddressBook;
 import tagline.model.ReadOnlyAddressBook;
+import tagline.model.contact.AddressBook;
 
 public class JsonAddressBookStorageTest {
 

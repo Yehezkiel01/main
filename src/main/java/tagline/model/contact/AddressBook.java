@@ -1,4 +1,4 @@
-package tagline.model;
+package tagline.model.contact;
 
 import static java.util.Objects.requireNonNull;
 
@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javafx.collections.ObservableList;
-import tagline.model.contact.Contact;
-import tagline.model.contact.Id;
-import tagline.model.contact.UniqueContactList;
+import tagline.model.ReadOnlyAddressBook;
 
 /**
  * Wraps all data at the address-book level
@@ -75,7 +73,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addContact(Contact p) {
         requireNonNull(p.getId());
-        assert(findContact(p.getId()).isEmpty()) : "Contact id is not unique";
+        assert (findContact(p.getId()).isEmpty()) : "Contact id is not unique";
         contacts.add(p);
     }
 
@@ -110,6 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Return the number of contacts in AddressBook.
+     *
      * @return the number of contacts.
      */
     public int size() {

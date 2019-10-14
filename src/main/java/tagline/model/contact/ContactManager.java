@@ -9,7 +9,6 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import tagline.model.AddressBook;
 import tagline.model.ReadOnlyAddressBook;
 
 /**

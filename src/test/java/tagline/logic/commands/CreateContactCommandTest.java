@@ -15,14 +15,13 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
-
 import tagline.commons.core.GuiSettings;
 import tagline.logic.commands.contact.CreateContactCommand;
 import tagline.logic.commands.exceptions.CommandException;
-import tagline.model.AddressBook;
 import tagline.model.Model;
 import tagline.model.ReadOnlyAddressBook;
 import tagline.model.ReadOnlyUserPrefs;
+import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactBuilder;
 

@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import tagline.commons.core.GuiSettings;
 import tagline.commons.core.LogsCenter;
+import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactManager;
 
