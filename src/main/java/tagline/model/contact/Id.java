@@ -9,7 +9,7 @@ public class Id {
 
     public static final String MESSAGE_CONSTRAINTS = "id should be a positive integer up to 5 digit";
 
-    private static int digit = 5;
+    private static int contactIdDigits = 5;
 
     private final int id;
 
@@ -26,7 +26,7 @@ public class Id {
      * Construct Id from integer.
      */
     Id(int id) {
-        if (id >= Math.pow(10, digit)) {
+        if (id >= Math.pow(10, contactIdDigits)) {
             throw new InvalidIdException("Id too large");
         }
         this.id = id;
@@ -44,7 +44,7 @@ public class Id {
             return false;
         }
 
-        if (0 <= value && value < (int) Math.pow(10, digit)) {
+        if (0 <= value && value < (int) Math.pow(10, contactIdDigits)) {
             return true;
         }
         return false;
@@ -54,11 +54,11 @@ public class Id {
      * Increase the number of digit in Id.
      */
     static void incrementDigit() {
-        digit++;
+        contactIdDigits++;
     }
 
     static int getDigit() {
-        return digit;
+        return contactIdDigits;
     }
 
     public Integer toInteger() {
@@ -68,7 +68,7 @@ public class Id {
     @Override
     public String toString() {
         String idString = ((Integer) id).toString();
-        while (idString.length() < digit) {
+        while (idString.length() < contactIdDigits) {
             idString = "0" + idString;
         }
         return idString;
