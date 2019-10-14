@@ -17,10 +17,9 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import tagline.model.contact.Contact;
+import tagline.model.contact.ContactBuilder;
 import tagline.model.contact.exceptions.DuplicateContactException;
-import tagline.testutil.ContactBuilder;
 
 public class AddressBookTest {
 

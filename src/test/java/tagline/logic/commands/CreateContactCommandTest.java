@@ -23,7 +23,7 @@ import tagline.model.Model;
 import tagline.model.ReadOnlyAddressBook;
 import tagline.model.ReadOnlyUserPrefs;
 import tagline.model.contact.Contact;
-import tagline.testutil.ContactBuilder;
+import tagline.model.contact.ContactBuilder;
 
 public class CreateContactCommandTest {
 

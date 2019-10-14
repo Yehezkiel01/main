@@ -1,11 +1,4 @@
-package tagline.testutil;
-
-import tagline.model.contact.Address;
-import tagline.model.contact.Contact;
-import tagline.model.contact.Description;
-import tagline.model.contact.Email;
-import tagline.model.contact.Name;
-import tagline.model.contact.Phone;
+package tagline.model.contact;
 
 /**
  * A utility class to help with building Contact objects.
@@ -17,6 +10,7 @@ public class ContactBuilder {
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_DESCRIPTION = "";
+    public static final int DEFAULT_ID = 0;
 
     private Name name;
     private Phone phone;
@@ -83,8 +77,15 @@ public class ContactBuilder {
         return this;
     }
 
+    /**
+     * Creates a contact
+     *
+     * @return new Contact
+     */
     public Contact build() {
-        return new Contact(name, phone, email, address, description);
+        Contact contact = new Contact(name, phone, email, address, description);
+        contact.setId(new Id(DEFAULT_ID));
+        return contact;
     }
 
 }

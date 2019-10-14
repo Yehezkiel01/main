@@ -25,7 +25,7 @@ import tagline.model.Model;
 import tagline.model.ModelManager;
 import tagline.model.UserPrefs;
 import tagline.model.contact.Contact;
-import tagline.testutil.ContactBuilder;
+import tagline.model.contact.ContactBuilder;
 import tagline.testutil.EditContactDescriptorBuilder;
 
 /**
