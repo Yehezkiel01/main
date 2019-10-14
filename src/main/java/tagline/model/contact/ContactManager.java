@@ -3,6 +3,7 @@ package tagline.model.contact;
 import static java.util.Objects.requireNonNull;
 import static tagline.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
 
@@ -60,8 +61,14 @@ public class ContactManager implements ContactModel {
         addressBook.setContact(target, editedContact);
     }
 
+    @Override
+    public Optional<Contact> findContact(int id) {
+        return addressBook.findContact(id);
+    }
+
     /**
      * Generate a random unique Id.
+     *
      * @return a random unique Id.
      */
     private Id generateUniqueId() {
@@ -72,7 +79,7 @@ public class ContactManager implements ContactModel {
 
         int limit = (int) Math.pow(10, Id.getDigit());
         int randomId = ThreadLocalRandom.current().nextInt(limit);
-        while (addressBook.findContact(randomId).isPresent()) {
+        while (findContact(randomId).isPresent()) {
             randomId = ThreadLocalRandom.current().nextInt(limit);
         }
 

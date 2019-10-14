@@ -1,5 +1,6 @@
 package tagline.model.contact;
 
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -48,6 +49,8 @@ public interface ContactModel {
      * book.
      */
     void setContact(Contact target, Contact editedContact);
+
+    Optional<Contact> findContact(int id);
 
     /**
      * Returns an unmodifiable view of the filtered contact list
