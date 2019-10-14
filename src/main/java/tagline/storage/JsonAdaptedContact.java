@@ -32,7 +32,7 @@ class JsonAdaptedContact {
     @JsonCreator
     public JsonAdaptedContact(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                              @JsonProperty("email") String email, @JsonProperty("address") String address,
-                             @JsonProperty("desciption") String description, @JsonProperty("id") String id) {
+                             @JsonProperty("description") String description, @JsonProperty("id") String id) {
 
         this.name = name;
         this.phone = phone;
@@ -100,6 +100,11 @@ class JsonAdaptedContact {
             throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
         final Description modelDescription = new Description(description);
+
+        if (id == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Id.class.getSimpleName()));
+        }
         if (!Id.isValidId(id)) {
             throw new IllegalValueException(Id.MESSAGE_CONSTRAINTS);
         }

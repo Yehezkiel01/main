@@ -17,6 +17,7 @@ public class ContactBuilder {
     private Email email;
     private Address address;
     private Description description;
+    private Id id;
 
     public ContactBuilder() {
         name = new Name(DEFAULT_NAME);
@@ -24,6 +25,7 @@ public class ContactBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         description = new Description(DEFAULT_DESCRIPTION);
+        id = new Id(DEFAULT_ID);
     }
 
     /**
@@ -35,6 +37,7 @@ public class ContactBuilder {
         email = contactToCopy.getEmail();
         address = contactToCopy.getAddress();
         description = contactToCopy.getDescription();
+        id = contactToCopy.getId();
     }
 
     /**
@@ -74,6 +77,14 @@ public class ContactBuilder {
      */
     public ContactBuilder withDescription(String description) {
         this.description = new Description(description);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Id} of the {@code Contact} that we are building.
+     */
+    public ContactBuilder withId(int id) {
+        this.id = new Id(id);
         return this;
     }
 

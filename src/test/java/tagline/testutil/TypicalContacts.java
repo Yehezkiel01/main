@@ -25,20 +25,22 @@ public class TypicalContacts {
     public static final Contact ALICE = new ContactBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
             .withPhone("94351253")
+            .withId(1)
             .build();
     public static final Contact BENSON = new ContactBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
+            .withId(2)
             .build();
     public static final Contact CARL = new ContactBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").withAddress("wall street").build();
+            .withEmail("heinz@example.com").withAddress("wall street").withId(3).build();
     public static final Contact DANIEL = new ContactBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withEmail("cornelia@example.com").withAddress("10th street").build();
+            .withEmail("cornelia@example.com").withAddress("10th street").withId(4).build();
     public static final Contact ELLE = new ContactBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").withAddress("michegan ave").build();
+            .withEmail("werner@example.com").withAddress("michegan ave").withId(5).build();
     public static final Contact FIONA = new ContactBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@example.com").withAddress("little tokyo").build();
-    public static final Contact GEORGE = new ContactBuilder().withName("George Best").withPhone("9482442")
+            .withEmail("lydia@example.com").withAddress("little tokyo").withId(6).build();
+    public static final Contact GEORGE = new ContactBuilder().withId(7).withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withAddress("4th street").build();
 
     // Manually added
