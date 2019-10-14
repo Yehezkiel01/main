@@ -74,6 +74,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The contact must not already exist in the address book.
      */
     public void addContact(Contact p) {
+        requireNonNull(p.getId());
+        assert(findContact(p.getId()).isEmpty()) : "Contact id is not unique";
         contacts.add(p);
     }
 
