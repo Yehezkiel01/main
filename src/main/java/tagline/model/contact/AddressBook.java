@@ -96,10 +96,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         contacts.remove(key);
     }
 
-    public Optional<Contact> findContact(int id) {
-        return contacts.findContact(id);
-    }
-
     public Optional<Contact> findContact(ContactId contactId) {
         return contacts.findContact(contactId);
     }

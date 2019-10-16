@@ -15,7 +15,6 @@ public class ContactId {
 
     /**
      * Construct an Id from String.
-     * Warning: This constructor should only be used by storage.
      * @param id
      */
     public ContactId(String id) {
@@ -25,7 +24,7 @@ public class ContactId {
     /**
      * Construct Id from integer.
      */
-    ContactId(int id) {
+    public ContactId(int id) {
         if (id >= Math.pow(10, contactIdDigits)) {
             throw new InvalidIdException("Id too large");
         }
@@ -80,16 +79,11 @@ public class ContactId {
             return true;
         }
 
-        int other;
-        if (obj instanceof Integer) {
-            other = (Integer) obj;
-        } else if (obj instanceof ContactId) {
-            other = ((ContactId) obj).id;
-        } else {
+        if (!(obj instanceof ContactId)) {
             return false;
         }
 
-        return id == other;
+        return id == ((ContactId) obj).id;
     }
 
     @Override

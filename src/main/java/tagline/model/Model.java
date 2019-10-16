@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import tagline.commons.core.GuiSettings;
 import tagline.model.contact.Contact;
+import tagline.model.contact.ContactId;
 import tagline.model.contact.ReadOnlyAddressBook;
 import tagline.model.note.Note;
 
@@ -79,7 +80,7 @@ public interface Model {
      */
     void setContact(Contact target, Contact editedContact);
 
-    Optional<Contact> findContact(int id);
+    Optional<Contact> findContact(ContactId id);
 
     /**
      * Returns an unmodifiable view of the filtered contact list
