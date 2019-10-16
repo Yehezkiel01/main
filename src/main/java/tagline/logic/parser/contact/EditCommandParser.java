@@ -13,13 +13,13 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
-import tagline.commons.core.index.Index;
 import tagline.logic.commands.contact.EditContactCommand;
 import tagline.logic.commands.contact.EditContactCommand.EditContactDescriptor;
 import tagline.logic.parser.ArgumentMultimap;
 import tagline.logic.parser.ArgumentTokenizer;
 import tagline.logic.parser.Parser;
 import tagline.logic.parser.exceptions.ParseException;
+import tagline.model.contact.ContactId;
 import tagline.model.tag.Tag;
 
 /**
@@ -39,10 +39,10 @@ public class EditCommandParser implements Parser<EditContactCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                         PREFIX_ADDRESS, PREFIX_DESCRIPTION);
 
-        Index index;
+        ContactId contactId;
 
         try {
-            index = ContactParserUtil.parseIndex(argMultimap.getPreamble());
+            contactId = ContactParserUtil.parseContactId(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditContactCommand.MESSAGE_USAGE), pe);
@@ -75,7 +75,7 @@ public class EditCommandParser implements Parser<EditContactCommand> {
             throw new ParseException(EditContactCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditContactCommand(index, editContactDescriptor);
+        return new EditContactCommand(contactId, editContactDescriptor);
     }
 
     /**
