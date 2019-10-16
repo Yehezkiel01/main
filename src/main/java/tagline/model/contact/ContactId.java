@@ -5,7 +5,7 @@ import tagline.model.contact.exceptions.InvalidIdException;
 /**
  * Represent a Contact unique Id.
  */
-public class Id {
+public class ContactId {
 
     public static final String MESSAGE_CONSTRAINTS = "id should be a positive integer up to 5 digit";
 
@@ -18,14 +18,14 @@ public class Id {
      * Warning: This constructor should only be used by storage.
      * @param id
      */
-    public Id(String id) {
+    public ContactId(String id) {
         this.id = Integer.valueOf(id);
     }
 
     /**
      * Construct Id from integer.
      */
-    Id(int id) {
+    ContactId(int id) {
         if (id >= Math.pow(10, contactIdDigits)) {
             throw new InvalidIdException("Id too large");
         }
@@ -83,8 +83,8 @@ public class Id {
         int other;
         if (obj instanceof Integer) {
             other = (Integer) obj;
-        } else if (obj instanceof Id) {
-            other = ((Id) obj).id;
+        } else if (obj instanceof ContactId) {
+            other = ((ContactId) obj).id;
         } else {
             return false;
         }
