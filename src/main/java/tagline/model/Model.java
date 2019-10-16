@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import tagline.commons.core.GuiSettings;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ReadOnlyAddressBook;
+import tagline.model.note.Note;
 
 /**
  * The API of the Model component.
@@ -91,4 +92,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredContactList(Predicate<Contact> predicate);
+
+    /**
+     * Returns true if a contact with the same identity as {@code note} exists in the note book.
+     */
+    boolean hasNote(Note note);
+
+    /**
+     * Adds the given note.
+     * {@code note} must not already exist in the address book.
+     */
+    void addNote(Note note);
 }

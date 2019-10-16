@@ -24,6 +24,7 @@ import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactBuilder;
 import tagline.model.contact.ReadOnlyAddressBook;
+import tagline.model.note.Note;
 
 public class CreateContactCommandTest {
 
@@ -156,6 +157,17 @@ public class CreateContactCommandTest {
         public void updateFilteredContactList(Predicate<Contact> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public boolean hasNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addNote(Note note) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**

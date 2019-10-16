@@ -15,6 +15,9 @@ import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactManager;
 import tagline.model.contact.ReadOnlyAddressBook;
+import tagline.model.note.Note;
+import tagline.model.note.NoteModel;
+import tagline.model.note.NoteModelManager;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -24,6 +27,7 @@ public class ModelManager implements Model {
 
     private final ContactManager contactManager;
     private final UserPrefs userPrefs;
+    private final NoteModel noteModel;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -36,6 +40,7 @@ public class ModelManager implements Model {
 
         this.contactManager = new ContactManager(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        noteModel = new NoteModelManager();
     }
 
     public ModelManager() {
@@ -112,6 +117,19 @@ public class ModelManager implements Model {
     @Override
     public Optional<Contact> findContact(int id) {
         return contactManager.findContact(id);
+    }
+
+    //=========== NoteBook ================================================================================
+
+    @Override
+    public boolean hasNote(Note note) {
+        requireNonNull(note);
+        return noteModel.hasNote(note);
+    }
+
+    @Override
+    public void addNote(Note note) {
+        noteModel.addNote(note);
     }
 
     //=========== Filtered Contact List Accessors =============================================================
