@@ -130,6 +130,7 @@ public class EditContactCommand extends ContactCommand {
         private Email email;
         private Address address;
         private Description description;
+        private ContactId contactId;
 
         public EditContactDescriptor() {
         }
@@ -144,6 +145,7 @@ public class EditContactCommand extends ContactCommand {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setDescription(toCopy.description);
+            setContactId(toCopy.contactId);
         }
 
         /**
@@ -191,6 +193,14 @@ public class EditContactCommand extends ContactCommand {
 
         public void setDescription(Description description) {
             this.description = description;
+        }
+
+        public Optional<ContactId> getContactId() {
+            return Optional.ofNullable(contactId);
+        }
+
+        public void setContactId(ContactId contactId) {
+            this.contactId = contactId;
         }
 
         @Override
