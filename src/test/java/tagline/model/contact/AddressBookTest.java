@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tagline.model.contact.exceptions.DuplicateContactException;
+import tagline.testutil.Assert;
 
 public class AddressBookTest {
 
@@ -78,6 +79,29 @@ public class AddressBookTest {
     @Test
     public void getContactList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getContactList().remove(0));
+    }
+
+    @Test
+    public void addContact_contactWithNullId_throwsNullPointerException() {
+        Contact contact = (new ContactBuilder()).build();
+        contact.setContactId(null);
+
+        assertThrows(NullPointerException.class, () -> addressBook.addContact(contact));
+    }
+
+    @Test
+    public void addContact_contactWithDuplicateId_throwsAssertionError() {
+        addressBook.addContact(ALICE);
+        Contact contact = (new ContactBuilder()).withId(ALICE.getContactId().toInteger()).build();
+
+        assertThrows(AssertionError.class, () -> addressBook.addContact(contact));
+    }
+
+    @Test
+    public void editContact_editContactId_throwsAssertionError() {
+        addressBook.addContact(ALICE);
+        Contact newAlice = (new ContactBuilder(ALICE)).withId(ALICE.getContactId().toInteger() + 1).build();
+        assertThrows(AssertionError.class, () -> addressBook.setContact(ALICE, newAlice));
     }
 
     /**
