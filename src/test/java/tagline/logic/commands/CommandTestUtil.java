@@ -57,7 +57,7 @@ public class CommandTestUtil {
     public static final EditContactCommand.EditContactDescriptor DESC_AMY;
     public static final EditContactCommand.EditContactDescriptor DESC_BOB;
 
-    public static final int NON_EXISTING_ID = 99999;
+    public static final ContactId NON_EXISTING_ID = new ContactId(99999);
     public static final ContactId CONTACT_ID_ONE = new ContactId(1);
 
     static {

@@ -99,7 +99,7 @@ public class EditContactCommandTest {
 
     @Test
     public void execute_invalidContactIdUnfilteredList_failure() {
-        ContactId nonExistingId = new ContactId(NON_EXISTING_ID);
+        ContactId nonExistingId = NON_EXISTING_ID;
 
         EditContactDescriptor descriptor = new EditContactDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditContactCommand editContactCommand = new EditContactCommand(nonExistingId, descriptor);
