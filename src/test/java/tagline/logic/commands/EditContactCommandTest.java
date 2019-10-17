@@ -15,6 +15,7 @@ import static tagline.testutil.TypicalIndexes.INDEX_SECOND_CONTACT;
 
 import org.junit.jupiter.api.Test;
 
+import tagline.logic.commands.CommandResult.ViewType;
 import tagline.logic.commands.contact.ClearContactCommand;
 import tagline.logic.commands.contact.EditContactCommand;
 import tagline.logic.commands.contact.EditContactCommand.EditContactDescriptor;
@@ -25,6 +26,7 @@ import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactBuilder;
 import tagline.model.contact.ContactId;
+import tagline.model.note.NoteBook;
 import tagline.testutil.EditContactDescriptorBuilder;
 
 /**
@@ -33,7 +35,8 @@ import tagline.testutil.EditContactDescriptorBuilder;
  */
 public class EditContactCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private static final ViewType EDIT_CONTACT_COMMAND_VIEW_TYPE = ViewType.CONTACT;
+    private Model model = new ModelManager(getTypicalAddressBook(), new NoteBook(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecified_success() {
@@ -45,10 +48,11 @@ public class EditContactCommandTest {
 
         String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
+                new NoteBook(), new UserPrefs());
         expectedModel.setContact(model.getFilteredContactList().get(0), editedContact);
 
-        assertCommandSuccess(editContactCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editContactCommand, model, expectedMessage, EDIT_CONTACT_COMMAND_VIEW_TYPE, expectedModel);
     }
 
     @Test
@@ -67,10 +71,11 @@ public class EditContactCommandTest {
 
         String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
+                new NoteBook(), new UserPrefs());
         expectedModel.setContact(lastContact, editedContact);
 
-        assertCommandSuccess(editContactCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editContactCommand, model, expectedMessage, EDIT_CONTACT_COMMAND_VIEW_TYPE, expectedModel);
     }
 
     @Test
@@ -81,9 +86,10 @@ public class EditContactCommandTest {
 
         String expectedMessage = String.format(EditContactCommand.MESSAGE_EDIT_CONTACT_SUCCESS, editedContact);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new NoteBook(),
+                new UserPrefs());
 
-        assertCommandSuccess(editContactCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editContactCommand, model, expectedMessage, EDIT_CONTACT_COMMAND_VIEW_TYPE, expectedModel);
     }
 
     @Test
@@ -91,6 +97,7 @@ public class EditContactCommandTest {
         var contactList = model.getAddressBook().getContactList();
         Contact firstContact = contactList.get(INDEX_FIRST_CONTACT.getZeroBased());
         Contact secondContact = contactList.get(INDEX_SECOND_CONTACT.getZeroBased());
+
         EditContactDescriptor descriptor = new EditContactDescriptorBuilder(firstContact).build();
         EditContactCommand editContactCommand = new EditContactCommand(secondContact.getContactId(), descriptor);
 
