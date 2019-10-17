@@ -104,7 +104,7 @@ public class EditContactCommandTest {
         EditContactDescriptor descriptor = new EditContactDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditContactCommand editContactCommand = new EditContactCommand(nonExistingId, descriptor);
 
-        assertCommandFailure(editContactCommand, model, EditContactCommand.NON_EXISTING_ID);
+        assertCommandFailure(editContactCommand, model, EditContactCommand.MESSAGE_NON_EXISTING_ID);
     }
 
     @Test

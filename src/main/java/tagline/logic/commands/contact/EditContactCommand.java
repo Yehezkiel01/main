@@ -47,7 +47,7 @@ public class EditContactCommand extends ContactCommand {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists in the address book.";
 
-    public static final String NON_EXISTING_ID = "Wrong contact ID.";
+    public static final String MESSAGE_NON_EXISTING_ID = "Wrong contact ID.";
 
     private final ContactId contactId;
     private final EditContactDescriptor editContactDescriptor;
@@ -87,7 +87,7 @@ public class EditContactCommand extends ContactCommand {
 
         Optional<Contact> contact = model.findContact(contactId);
         if (contact.isEmpty()) {
-            throw new CommandException(NON_EXISTING_ID);
+            throw new CommandException(MESSAGE_NON_EXISTING_ID);
         }
 
         Contact contactToEdit = contact.get();
