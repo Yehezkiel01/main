@@ -59,6 +59,7 @@ public class CommandTestUtil {
 
     public static final ContactId NON_EXISTING_ID = new ContactId(99999);
     public static final ContactId CONTACT_ID_ONE = new ContactId(1);
+    public static final ContactId CONTACT_ID_TWO = new ContactId(2);
 
     static {
         DESC_AMY = new EditContactDescriptorBuilder().withName(VALID_NAME_AMY)
