@@ -18,7 +18,7 @@ public class ContactId {
      * @param id
      */
     public ContactId(String id) {
-        this.id = Integer.valueOf(id);
+        this(Integer.valueOf(id));
     }
 
     /**
@@ -27,6 +27,9 @@ public class ContactId {
     public ContactId(int id) {
         if (id >= Math.pow(10, contactIdDigits)) {
             throw new InvalidIdException("Id too large");
+        }
+        if (id < 0) {
+            throw new InvalidIdException("Id has to be a positive number");
         }
         this.id = id;
     }
