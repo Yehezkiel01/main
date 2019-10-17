@@ -2,11 +2,8 @@ package tagline.logic.commands.contact;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
 import java.util.Optional;
 
-import tagline.commons.core.Messages;
-import tagline.commons.core.index.Index;
 import tagline.logic.commands.CommandResult;
 import tagline.logic.commands.exceptions.CommandException;
 import tagline.model.Model;

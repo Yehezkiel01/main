@@ -1,7 +1,6 @@
 package tagline.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static tagline.commons.core.Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX;
 import static tagline.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static tagline.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static tagline.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
