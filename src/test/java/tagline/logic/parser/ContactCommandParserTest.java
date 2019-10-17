@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static tagline.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static tagline.testutil.Assert.assertThrows;
-import static tagline.testutil.TypicalIndexes.INDEX_FIRST_CONTACT;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +22,7 @@ import tagline.logic.parser.contact.ContactCommandParser;
 import tagline.logic.parser.exceptions.ParseException;
 import tagline.model.contact.Contact;
 import tagline.model.contact.ContactBuilder;
+import tagline.model.contact.ContactId;
 import tagline.model.contact.NameContainsKeywordsPredicate;
 import tagline.testutil.ContactUtil;
 import tagline.testutil.EditContactDescriptorBuilder;
@@ -46,9 +46,10 @@ public class ContactCommandParserTest {
 
     @Test
     public void parseCommand_delete() throws Exception {
+        ContactId contactId = new ContactId(1);
         DeleteContactCommand command = (DeleteContactCommand) parser.parseCommand(
-                DeleteContactCommand.COMMAND_WORD + " " + INDEX_FIRST_CONTACT.getOneBased());
-        assertEquals(new DeleteContactCommand(INDEX_FIRST_CONTACT), command);
+                DeleteContactCommand.COMMAND_WORD + " " + contactId.toString());
+        assertEquals(new DeleteContactCommand(contactId), command);
     }
 
     @Test
