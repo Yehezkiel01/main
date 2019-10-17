@@ -18,6 +18,7 @@ import tagline.logic.commands.exceptions.CommandException;
 import tagline.model.Model;
 import tagline.model.contact.AddressBook;
 import tagline.model.contact.Contact;
+import tagline.model.contact.ContactId;
 import tagline.model.contact.NameContainsKeywordsPredicate;
 import tagline.testutil.EditContactDescriptorBuilder;
 
@@ -57,6 +58,7 @@ public class CommandTestUtil {
     public static final EditContactCommand.EditContactDescriptor DESC_BOB;
 
     public static final int NON_EXISTING_ID = 99999;
+    public static final ContactId CONTACT_ID_ONE = new ContactId(1);
 
     static {
         DESC_AMY = new EditContactDescriptorBuilder().withName(VALID_NAME_AMY)
