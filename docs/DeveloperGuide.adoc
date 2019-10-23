@@ -196,6 +196,18 @@ The `Storage` component,
 
 * can save `UserPref` objects in json format and read it back.
 
+[[Design-ContactStorage]]
+==== Contact Storage component
+
+.Structure of the Contact Storage Component
+image::ContactStorageClassDiagram.png[]
+
+*API* : link:{repoURL}/src/main/java/tagline/storage/note/ContactBookStorage.java[`ContactBookStorage.java`]
+
+The `ContactStorage` component,
+
+* can save the Address Book data in json format and read it back.
+
 [[Design-NoteStorage]]
 ==== Note Storage component
 
