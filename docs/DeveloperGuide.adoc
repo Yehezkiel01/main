@@ -156,7 +156,7 @@ The `Model`,
 ==== Contact Model component
 
 .Structure of the Contact Model Component
-image::ContactModelClassDiagram.png[]
+image::ContactModelClassDiagram.png[Contact Model Diagram, 625, 500]
 
 *API* : link:{repoURL}/src/main/java/tagline/model/contact/ContactModel.java[`ContactModel.java`]
 
