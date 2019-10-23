@@ -149,8 +149,23 @@ image::ModelClassDiagram.png[]
 The `Model`,
 
 * stores a `UserPref` object that represents the user's preferences.
-* manages Address Book data through ContactManager.
-* manages Note Book data through NoteManager
+* manages Address Book data through `ContactModel` sub-component.
+* manages Note Book data through `NoteMode` sub-component.
+
+[[Design-ContactModel]]
+==== Contact Model component
+
+.Structure of the Contact Model Component
+image::ContactModelClassDiagram.png[]
+
+*API* : link:{repoURL}/src/main/java/tagline/model/contact/ContactModel.java[`ContactModel.java`]
+
+The `ContactModel`,
+
+* stores the Address Book data.
+* exposes an unmodifiable `ObservableList<Contact>` which can be accessed from `Model` that can be 'observed' e.g. the
+UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* does not depend on any of the other three components.
 
 [[Design-NoteModel]]
 ==== Note Model component
