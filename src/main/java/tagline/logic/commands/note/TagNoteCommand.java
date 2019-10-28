@@ -1,6 +1,9 @@
 package tagline.logic.commands.note;
 
 import static java.util.Objects.requireNonNull;
+import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_CONTENT;
+import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_TITLE;
+import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_TAG;
 import static tagline.model.note.NoteModel.PREDICATE_SHOW_ALL_NOTES;
 
 import java.util.List;
@@ -22,6 +25,14 @@ public class TagNoteCommand extends NoteCommand {
     public static final String COMMAND_WORD = "tag";
 
     public static final String MESSAGE_TAG_NOTE_SUCCESS = "Tagged Note: %1$s";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Tags a note identified "
+            + "by the note index number with several tags."
+            + "Parameters: NOTE_ID (must be a positive integer) "
+            + "[" + PREFIX_TAG + "TAG ]+ \n"
+            + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_TAG + " #tagline ";
+
 
     private final NoteId noteId;
     private final List<Tag> tags;
