@@ -12,6 +12,7 @@ import tagline.logic.commands.note.CreateNoteCommand;
 import tagline.logic.commands.note.DeleteNoteCommand;
 import tagline.logic.commands.note.EditNoteCommand;
 import tagline.logic.commands.note.ListNoteCommand;
+import tagline.logic.commands.note.TagNoteCommand;
 import tagline.logic.parser.exceptions.ParseException;
 
 /**
@@ -51,6 +52,9 @@ public class NoteCommandParser {
 
         case ListNoteCommand.COMMAND_WORD:
             return new ListNoteParser().parse(arguments);
+
+        case TagNoteCommand.COMMAND_WORD:
+            return new TagNoteParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

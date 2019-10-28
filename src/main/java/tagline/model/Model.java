@@ -14,6 +14,8 @@ import tagline.model.group.ReadOnlyGroupBook;
 import tagline.model.note.Note;
 import tagline.model.note.NoteId;
 import tagline.model.note.ReadOnlyNoteBook;
+import tagline.model.tag.Tag;
+import tagline.model.tag.TagId;
 
 /**
  * The API of the Model component.
@@ -149,7 +151,12 @@ public interface Model {
      * Finds a {@code Note} in the note book based on the {@code noteId}.
      * @return Optional object if corresponding note is found, empty otherwise
      */
-    public Optional<Note> findNote(NoteId noteId);
+    Optional<Note> findNote(NoteId noteId);
+
+    /**
+     * Tags a note.
+     */
+    void tagNote(Note target, TagId tagId);
 
     /**
      * Returns an unmodifiable view of the filtered note list
@@ -218,4 +225,12 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredGroupList(Predicate<Group> predicate);
+
+    /**
+     * Exchanges a tag with an id. If the tag does not exist, the tag will be created and saved.
+     *
+     * @param tag to be exchanged
+     * @return the tag id.
+     */
+    TagId createOrFindTag(Tag tag);
 }

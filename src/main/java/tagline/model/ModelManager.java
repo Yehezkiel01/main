@@ -25,6 +25,8 @@ import tagline.model.note.NoteBook;
 import tagline.model.note.NoteId;
 import tagline.model.note.NoteManager;
 import tagline.model.note.ReadOnlyNoteBook;
+import tagline.model.tag.Tag;
+import tagline.model.tag.TagId;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -215,6 +217,10 @@ public class ModelManager implements Model {
         return noteManager.findNote(noteId);
     }
 
+    @Override
+    public void tagNote(Note note, TagId tagId) {
+    }
+
     //=========== Filtered Note List Accessors =============================================================
 
     /**
@@ -281,6 +287,12 @@ public class ModelManager implements Model {
         groupManager.updateFilteredGroupList(predicate);
     }
 
+    //=========== TagBook ====================================================================================
+
+    // Still dummy / incomplete method.
+    public TagId createOrFindTag(Tag tag) {
+        return new TagId(new Long(1));
+    }
 
     //========================================================================================================
 
