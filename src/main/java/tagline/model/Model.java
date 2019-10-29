@@ -156,7 +156,7 @@ public interface Model {
     /**
      * Tags a note.
      */
-    void tagNote(Note target, TagId tagId);
+    void tagNote(Note target, Tag tag);
 
     /**
      * Returns an unmodifiable view of the filtered note list
@@ -232,5 +232,5 @@ public interface Model {
      * @param tag to be exchanged
      * @return the tag id.
      */
-    TagId createOrFindTag(Tag tag);
+    Tag createOrFindTag(Tag tag);
 }

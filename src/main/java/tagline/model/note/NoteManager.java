@@ -14,6 +14,7 @@ import tagline.commons.core.GuiSettings;
 import tagline.commons.core.LogsCenter;
 import tagline.model.ReadOnlyUserPrefs;
 import tagline.model.UserPrefs;
+import tagline.model.tag.Tag;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -125,6 +126,15 @@ public class NoteManager implements NoteModel {
     @Override
     public Optional<Note> findNote(NoteId noteId) {
         return noteBook.findNote(noteId);
+    }
+
+    @Override
+    public void tagNote(Note note, Tag tag) {
+        Optional<Note> foundNote = findNote(note.getNoteId());
+
+        assert (foundNote.isPresent()) : "Tagging a non-existing note.";
+
+        foundNote.get().addTag(tag);
     }
 
     //=========== Filtered Note List Accessors =============================================================

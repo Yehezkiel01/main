@@ -1,5 +1,6 @@
 package tagline.model.note;
 
+import static java.util.Objects.requireNonNull;
 import static tagline.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
@@ -67,6 +68,25 @@ public class Note {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Adds new tag. Duplicate will not be inserted.
+     *
+     * @return True if tag is successfully inserted.
+     */
+    public Boolean addTag(Tag tag) {
+        requireNonNull(tag.getTagId());
+        return tags.add(tag);
+    }
+
+    /**
+     * Removes a tag if it exist.
+     *
+     * @return True if tag is successfully removed.
+     */
+    public Boolean removeTag(Tag tag) {
+        return tags.remove(tag);
     }
 
     /**

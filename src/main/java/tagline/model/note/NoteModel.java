@@ -7,6 +7,8 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import tagline.commons.core.GuiSettings;
 import tagline.model.ReadOnlyUserPrefs;
+import tagline.model.tag.Tag;
+import tagline.model.tag.TagId;
 
 /**
  * The API of the NoteModel component.
@@ -81,7 +83,12 @@ public interface NoteModel {
      * Finds a {@code Note} based on the {@code noteId}.
      * @return Optional object if corresponding note is found, empty otherwise
      */
-    public Optional<Note> findNote(NoteId noteId);
+    Optional<Note> findNote(NoteId noteId);
+
+    /**
+     * Tags a note.
+     */
+    void tagNote(Note note, Tag tag);
 
     /** Returns an unmodifiable view of the filtered note list */
     ObservableList<Note> getFilteredNoteList();

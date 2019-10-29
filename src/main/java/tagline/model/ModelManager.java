@@ -223,7 +223,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void tagNote(Note note, TagId tagId) {
+    public void tagNote(Note note, Tag tag) {
+        noteManager.tagNote(note, tag);
     }
 
     //=========== Filtered Note List Accessors =============================================================
@@ -295,17 +296,17 @@ public class ModelManager implements Model {
     //=========== TagBook ====================================================================================
 
     @Override
-    public TagId createOrFindTag(Tag tag) {
+    public Tag createOrFindTag(Tag tag) {
         Optional<Tag> foundTag = tagManager.findTag(tag);
 
         if (foundTag.isPresent()) {
-            return foundTag.get().getTagId();
+            return foundTag.get();
         }
 
         tag.setTagId(new TagId());
         tagManager.addTag(tag);
 
-        return tag.getTagId();
+        return tag;
     }
 
     //========================================================================================================
