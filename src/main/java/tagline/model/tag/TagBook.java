@@ -3,6 +3,7 @@ package tagline.model.tag;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 
@@ -69,6 +70,8 @@ public class TagBook implements ReadOnlyTagBook {
      * The tag must not already exist in the address book.
      */
     public void addTag(Tag p) {
+        requireNonNull(p.getTagId());
+        assert (findTag(p.getTagId()).isEmpty()) : "Tag id is not unique";
         tags.addTag(p);
     }
 
@@ -76,7 +79,7 @@ public class TagBook implements ReadOnlyTagBook {
      * Finds all tags with ID equal to {@code tagId}.
      * Returns an unmodifiable list.
      */
-    public List<Tag> findTag(TagId tagId) {
+    public Optional<Tag> findTag(TagId tagId) {
         return tags.findTag(tagId);
     }
 

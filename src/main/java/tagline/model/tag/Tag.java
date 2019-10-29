@@ -40,6 +40,10 @@ public abstract class Tag {
         this.tagType = tagType;
     }
 
+    public TagId getTagId() {
+        return tagId;
+    }
+
     /**
      * Returns true if {@code other} has the same data and ID as this object.
      * This defines a stronger notion of equality between two tags.

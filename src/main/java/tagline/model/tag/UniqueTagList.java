@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -86,21 +87,19 @@ public class UniqueTagList implements Iterable<Tag> {
     }
 
     /**
-     * Returns a list of {@code Tag}s whose ID matches a given value.
+     * Returns the {@code Tag} whose ID matches the given parameter if any.
      *
      * @param tagId The ID to match
-     * @return A list containing all matching tags
+     * @return An optional tag if there is a matching tag.
      */
-    public List<Tag> findTag(TagId tagId) {
-        List<Tag> result = new ArrayList<>();
+    public Optional<Tag> findTag(TagId tagId) {
         for (Tag tag : internalList) {
             if (tag.tagId.equals(tagId)) {
-                result.add(tag);
-                return result; //tags are assumed to be unique
+                return Optional.of(tag);
             }
         }
 
-        return Collections.unmodifiableList(result);
+        return Optional.empty();
     }
 
     /**

@@ -1,6 +1,7 @@
 package tagline.model.tag;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * The API of the TagModel component.
@@ -30,5 +31,5 @@ public interface TagModel {
     /**
      * Returns a list containing the tag matching {@code id}, or an empty list if none were found.
      */
-    List<Tag> findTag(TagId id);
+    Optional<Tag> findTag(TagId id);
 }
