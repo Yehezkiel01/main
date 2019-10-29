@@ -26,6 +26,8 @@ import tagline.model.group.GroupBook;
 import tagline.model.group.ReadOnlyGroupBook;
 import tagline.model.note.NoteBook;
 import tagline.model.note.ReadOnlyNoteBook;
+import tagline.model.tag.ReadOnlyTagBook;
+import tagline.model.tag.TagBook;
 import tagline.model.util.SampleDataUtil;
 import tagline.storage.JsonUserPrefsStorage;
 import tagline.storage.Storage;
@@ -153,6 +155,14 @@ public class MainApp extends Application {
     }
 
     /**
+     * Gets and returns a {@code ReadOnlyTagBook} from {@code storage}.
+     * This method still incomplete.
+     */
+    private ReadOnlyTagBook getTagBookFromStorage(Storage storage) {
+        return new TagBook();
+    }
+
+    /**
      * Returns a {@code ModelManager} with the data from {@code storage}'s address book, note book and
      * {@code userPrefs}. <br>
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
@@ -163,8 +173,9 @@ public class MainApp extends Application {
         ReadOnlyAddressBook initialAddressBookData = getAddressBookFromStorage(storage);
         ReadOnlyNoteBook initialNoteBookData = getNoteBookFromStorage(storage);
         ReadOnlyGroupBook initialGroupBookData = getGroupBookFromStorage(storage);
+        ReadOnlyTagBook initialTagBookData = getTagBookFromStorage(storage);
         return new ModelManager(initialAddressBookData, initialNoteBookData,
-            initialGroupBookData, userPrefs);
+            initialGroupBookData, initialTagBookData, userPrefs);
     }
 
     private void initLogging(Config config) {

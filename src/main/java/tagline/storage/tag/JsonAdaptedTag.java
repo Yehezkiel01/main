@@ -33,7 +33,7 @@ public class JsonAdaptedTag {
      */
     public JsonAdaptedTag(Tag source) {
         tagType = source.tagType.name();
-        tagId = source.tagId.toString();
+        tagId = source.getTagId().toString();
     }
 
     @JsonValue

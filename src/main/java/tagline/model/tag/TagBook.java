@@ -83,6 +83,13 @@ public class TagBook implements ReadOnlyTagBook {
         return tags.findTag(tagId);
     }
 
+    /**
+     * Finds a tag with ID equal to {@code tagId}.
+     */
+    public Optional<Tag> findTag(Tag tag) {
+        return tags.findTag(tag);
+    }
+
     //// util methods
 
     @Override

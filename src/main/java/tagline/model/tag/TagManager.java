@@ -45,4 +45,10 @@ public class TagManager implements TagModel {
         requireNonNull(tagId);
         return tagBook.findTag(tagId);
     }
+
+    @Override
+    public Optional<Tag> findTag(Tag tag) {
+        requireNonNull(tag);
+        return tagBook.findTag(tag);
+    }
 }

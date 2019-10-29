@@ -52,7 +52,7 @@ public class UniqueTagList implements Iterable<Tag> {
      * @return True if a matching tag was found
      */
     public boolean containsTag(TagId tagId) {
-        return internalList.stream().anyMatch(t -> (t.tagId.equals(tagId)));
+        return internalList.stream().anyMatch(t -> (t.getTagId().equals(tagId)));
     }
 
     /**
@@ -94,7 +94,24 @@ public class UniqueTagList implements Iterable<Tag> {
      */
     public Optional<Tag> findTag(TagId tagId) {
         for (Tag tag : internalList) {
-            if (tag.tagId.equals(tagId)) {
+            if (tag.getTagId().equals(tagId)) {
+                return Optional.of(tag);
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    /**
+     * Returns the {@code Tag} which are equals with {@code searchedTag}.
+     * This method will not check the id of the tag.
+     *
+     * @param searchedTag Tag to be compared.
+     * @return An optional tag if there is a matching tag.
+     */
+    public Optional<Tag> findTag(Tag searchedTag) {
+        for (Tag tag : internalList) {
+            if (searchedTag.equals(tag)) {
                 return Optional.of(tag);
             }
         }

@@ -16,7 +16,7 @@ public abstract class Tag {
         GROUP_TAG,
     }
 
-    public final TagId tagId;
+    private TagId tagId;
     public final TagType tagType;
 
     /**
@@ -26,7 +26,6 @@ public abstract class Tag {
      */
     public Tag(TagType tagType) {
         requireNonNull(tagType);
-        this.tagId = new TagId();
         this.tagType = tagType;
     }
 
@@ -45,6 +44,13 @@ public abstract class Tag {
     }
 
     /**
+     * Assigns an id for a tag.
+     */
+    public void setTagId(TagId tagId) {
+        this.tagId = tagId;
+    }
+
+    /**
      * Returns true if {@code other} has the same data and ID as this object.
      * This defines a stronger notion of equality between two tags.
      */
@@ -52,8 +58,7 @@ public abstract class Tag {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
             || (other instanceof Tag // instanceof handles nulls
-            && tagType.equals(((Tag) other).tagType) // state check
-            && tagId.equals(((Tag) other).tagId));
+            && tagType.equals(((Tag) other).tagType)); // state check
     }
 
     /**

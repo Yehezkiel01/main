@@ -29,7 +29,13 @@ public interface TagModel {
     void addTag(Tag tag);
 
     /**
-     * Returns a list containing the tag matching {@code id}, or an empty list if none were found.
+     * Finds tag by {@code id}.
      */
     Optional<Tag> findTag(TagId id);
+
+    /**
+     * Finds tag by tag object without checking its id.
+     * This method will be used for tag which has not been assigned any Id.
+     */
+    Optional<Tag> findTag(Tag tag);
 }
