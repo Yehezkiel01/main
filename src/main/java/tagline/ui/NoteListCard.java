@@ -2,9 +2,11 @@ package tagline.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import tagline.model.note.Note;
+import tagline.model.tag.Tag;
 
 /**
  * An UI component that displays information of a {@code Note}.
@@ -26,6 +28,8 @@ public class NoteListCard extends UiPart<Region> {
     private Label time;
     @FXML
     private Label content;
+    @FXML
+    private Label tags;
 
     public NoteListCard(Note note) {
         super(FXML);
@@ -40,6 +44,11 @@ public class NoteListCard extends UiPart<Region> {
 
         time.setText(note.getTimeCreated().getTime().toString());
         content.setText(note.getContent().value);
+
+        String tagDisplay = note.getTags().stream().map(Tag::toString)
+                .reduce("Tags:", (left, right) -> left + " " + right);
+
+        tags.setText(tagDisplay);
     }
 
     @Override

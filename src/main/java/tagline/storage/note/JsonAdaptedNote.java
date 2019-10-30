@@ -69,9 +69,9 @@ public class JsonAdaptedNote {
         timeCreated = source.getTimeCreated().getTime().getStorageString();
         timeLastEdited = source.getTimeLastEdited().getTime().getStorageString();
         noteIdCount = NoteIdCounter.getStorageString();
-        tagged.addAll(source.getTags().stream()
+/*        tagged.addAll(source.getTags().stream()
             .map(JsonAdaptedTag::new)
-            .collect(Collectors.toList()));
+            .collect(Collectors.toList()));*/
     }
 
     /**
