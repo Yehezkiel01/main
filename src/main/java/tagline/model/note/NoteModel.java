@@ -90,6 +90,11 @@ public interface NoteModel {
      */
     void tagNote(Note note, Tag tag);
 
+    /**
+     * Untags a note.
+     */
+    void untagNote(Note note, Tag tag);
+
     /** Returns an unmodifiable view of the filtered note list */
     ObservableList<Note> getFilteredNoteList();
 

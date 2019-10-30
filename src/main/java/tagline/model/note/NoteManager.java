@@ -130,11 +130,13 @@ public class NoteManager implements NoteModel {
 
     @Override
     public void tagNote(Note note, Tag tag) {
-        Optional<Note> foundNote = findNote(note.getNoteId());
+        noteBook.tagNote(note, tag);
+    }
 
-        assert (foundNote.isPresent()) : "Tagging a non-existing note.";
 
-        foundNote.get().addTag(tag);
+    @Override
+    public void untagNote(Note note, Tag tag) {
+        noteBook.untagNote(note, tag);
     }
 
     //=========== Filtered Note List Accessors =============================================================

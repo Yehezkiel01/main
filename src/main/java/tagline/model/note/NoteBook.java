@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javafx.collections.ObservableList;
+import tagline.model.tag.Tag;
 
 /**
  * Wraps all data at the note book level
@@ -79,6 +80,22 @@ public class NoteBook implements ReadOnlyNoteBook {
      */
     public Optional<Note> findNote(NoteId noteId) {
         return notes.findNote(noteId);
+    }
+
+    public void tagNote(Note note, Tag tag) {
+        Optional<Note> foundNote = findNote(note.getNoteId());
+
+        assert (foundNote.isPresent()) : "Tagging a non-existing note.";
+
+        foundNote.get().addTag(tag);
+    }
+
+    public void untagNote(Note note, Tag tag) {
+        Optional<Note> foundNote = findNote(note.getNoteId());
+
+        assert (foundNote.isPresent()) : "Untagging a non-existing note.";
+
+        foundNote.get().removeTag(tag);
     }
 
     /**
