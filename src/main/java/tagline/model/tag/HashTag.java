@@ -25,6 +25,10 @@ public class HashTag extends Tag {
         return value;
     }
 
+    public static boolean isValidValue(String value) {
+        return value.length() <= HashTag.LENGTH_LIMIT;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

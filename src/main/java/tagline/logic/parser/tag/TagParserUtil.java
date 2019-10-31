@@ -39,7 +39,7 @@ public class TagParserUtil {
         switch (tagKey) {
 
         case HashTag.TAG_PREFIX:
-            if (tagValue.length() > HashTag.LENGTH_LIMIT) {
+            if (!HashTag.isValidValue(tagValue)) {
                 throw new ParseException("Invalid tag: " + HashTag.MESSAGE_CONSTRAINTS);
             }
             return new HashTag(tagValue);
