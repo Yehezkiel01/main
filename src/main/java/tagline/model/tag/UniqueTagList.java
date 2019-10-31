@@ -9,7 +9,6 @@ import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import tagline.model.tag.exceptions.DuplicateTagException;
 
 /**
@@ -18,7 +17,7 @@ import tagline.model.tag.exceptions.DuplicateTagException;
 public class UniqueTagList implements Iterable<Tag> {
     private final ObservableList<Tag> internalList = FXCollections.observableArrayList();
     private final ObservableList<Tag> internalUnmodifiableList =
-        FXCollections.unmodifiableObservableList(internalList);
+            FXCollections.unmodifiableObservableList(internalList);
 
     /**
      * Replaces the contents of the tag list with {@code replacement}.
@@ -55,7 +54,7 @@ public class UniqueTagList implements Iterable<Tag> {
         return internalList.stream().anyMatch(t -> t.equals(toCheck));
     }
 
-     /**
+    /**
      * Returns the {@code Tag} which are equals with {@code searchedTag}.
      *
      * @param searchedTag Tag to be compared.
@@ -118,8 +117,8 @@ public class UniqueTagList implements Iterable<Tag> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof UniqueTagList // instanceof handles nulls
-            && internalList.equals(((UniqueTagList) other).internalList));
+                || (other instanceof UniqueTagList // instanceof handles nulls
+                && internalList.equals(((UniqueTagList) other).internalList));
     }
 
     @Override

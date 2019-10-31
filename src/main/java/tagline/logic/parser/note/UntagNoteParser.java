@@ -6,14 +6,11 @@ import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_TAG;
 import java.util.ArrayList;
 import java.util.List;
 
-import tagline.logic.commands.exceptions.CommandException;
-import tagline.logic.commands.note.EditNoteCommand;
 import tagline.logic.commands.note.TagNoteCommand;
 import tagline.logic.commands.note.UntagNoteCommand;
 import tagline.logic.parser.ArgumentMultimap;
 import tagline.logic.parser.ArgumentTokenizer;
 import tagline.logic.parser.Parser;
-import tagline.logic.parser.TaglineParser;
 import tagline.logic.parser.exceptions.ParseException;
 import tagline.logic.parser.tag.TagParserUtil;
 import tagline.model.note.NoteId;
@@ -28,6 +25,7 @@ public class UntagNoteParser implements Parser<UntagNoteCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the UntagNoteCommand
      * and returns an UntagNoteCommand object for execution.
+     *
      * @throws tagline.logic.parser.exceptions.ParseException if the user input does not conform the expected format
      */
     public UntagNoteCommand parse(String args) throws ParseException {

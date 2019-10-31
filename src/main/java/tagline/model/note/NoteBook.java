@@ -27,7 +27,8 @@ public class NoteBook implements ReadOnlyNoteBook {
         notes = new UniqueNoteList();
     }
 
-    public NoteBook() {}
+    public NoteBook() {
+    }
 
     /**
      * Creates an NoteBook using the Notes in the {@code toBeCopied}
@@ -76,12 +77,16 @@ public class NoteBook implements ReadOnlyNoteBook {
 
     /**
      * Finds a {@code Note} based on the {@code noteId}.
+     *
      * @return Optional object if corresponding note is found, empty otherwise
      */
     public Optional<Note> findNote(NoteId noteId) {
         return notes.findNote(noteId);
     }
 
+    /**
+     * Tags a note inside the address book.
+     */
     public void tagNote(Note note, Tag tag) {
         Optional<Note> foundNote = findNote(note.getNoteId());
 
@@ -90,6 +95,9 @@ public class NoteBook implements ReadOnlyNoteBook {
         foundNote.get().addTag(tag);
     }
 
+    /**
+     * Untags a note inside the address book.
+     */
     public void untagNote(Note note, Tag tag) {
         Optional<Note> foundNote = findNote(note.getNoteId());
 

@@ -1,6 +1,5 @@
 package tagline.model.note;
 
-import static java.util.Objects.requireNonNull;
 import static tagline.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
