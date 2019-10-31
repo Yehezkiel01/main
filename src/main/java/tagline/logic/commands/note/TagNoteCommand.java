@@ -52,7 +52,7 @@ public class TagNoteCommand extends NoteCommand {
         // Check for invalid note id
         Optional<Note> noteFound = model.findNote(noteId);
 
-        if (model.findNote(noteId).isEmpty()) {
+        if (noteFound.isEmpty()) {
             throw new CommandException(Messages.MESSAGE_INVALID_NOTE_INDEX);
         }
 
