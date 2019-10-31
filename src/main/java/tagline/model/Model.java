@@ -15,7 +15,6 @@ import tagline.model.note.Note;
 import tagline.model.note.NoteId;
 import tagline.model.note.ReadOnlyNoteBook;
 import tagline.model.tag.Tag;
-import tagline.model.tag.TagId;
 
 /**
  * The API of the Model component.
@@ -104,6 +103,11 @@ public interface Model {
     void updateFilteredContactList(Predicate<Contact> predicate);
 
     /**
+     * Returns an unmodifiable copy of the filtered contact list with a set predicate.
+     */
+    ObservableList<Contact> getFilteredContactListWithPredicate(Predicate<Contact> predicate);
+
+    /**
      * Returns the user prefs' note book file path.
      */
     Path getNoteBookFilePath();
@@ -149,6 +153,7 @@ public interface Model {
 
     /**
      * Finds a {@code Note} in the note book based on the {@code noteId}.
+     *
      * @return Optional object if corresponding note is found, empty otherwise
      */
     Optional<Note> findNote(NoteId noteId);
@@ -232,10 +237,15 @@ public interface Model {
     void updateFilteredGroupList(Predicate<Group> predicate);
 
     /**
-     * Exchanges a tag with an id. If the tag does not exist, the tag will be created and saved.
+     * Registers the tag in the TagManager if it is not.
      *
-     * @param tag to be exchanged
-     * @return the tag id.
+     * @return the tag.
      */
     Tag createOrFindTag(Tag tag);
+
+    /**
+     * Returns an unmodifiable copy of the filtered group list with a set predicate.
+     */
+    ObservableList<Group> getFilteredGroupListWithPredicate(Predicate<Group> predicate);
+
 }

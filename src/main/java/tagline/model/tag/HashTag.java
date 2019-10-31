@@ -1,7 +1,5 @@
 package tagline.model.tag;
 
-import static java.util.Objects.requireNonNull;
-
 /**
  * Tag a contact.
  */
@@ -14,25 +12,14 @@ public class HashTag extends Tag {
      * Constructs a HashTag.
      */
     public HashTag(String value) {
-        super(TagType.HASH_TAG);
-        requireNonNull(value);
-        this.value = value;
-    }
-
-    /**
-     * Constructs a {@code HashTag} from storage.
-     */
-    public HashTag(TagId tagId, String value) {
-        super(tagId, TagType.HASH_TAG);
-        requireNonNull(value);
-        requireNonNull(tagId);
         this.value = value;
     }
 
     @Override
     public boolean equals(Object other) {
-        return super.equals(other)
-                && value.equals(((HashTag) other).value);
+        return other == this // short circuit if same object
+                || ((other instanceof HashTag) // instanceof handles nulls
+                && value.equals(((HashTag) other).value));
     }
 
     @Override

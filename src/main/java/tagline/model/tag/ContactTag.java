@@ -16,25 +16,19 @@ public class ContactTag extends Tag {
      * @param contactId A valid contactId
      */
     public ContactTag(ContactId contactId) {
-        super(TagType.CONTACT_TAG);
+        super();
         this.contactId = contactId;
     }
 
-    /**
-     * Constructs a {@code ContactTag} from storage.
-     *
-     * @param tagId     A valid tag id
-     * @param contactId A valid contactId
-     */
-    public ContactTag(TagId tagId, ContactId contactId) {
-        super(tagId, TagType.CONTACT_TAG);
-        this.contactId = contactId;
+    public ContactId getContactId() {
+        return contactId;
     }
 
     @Override
     public boolean equals(Object other) {
-        return super.equals(other)
-            && contactId.equals(((ContactTag) other).contactId);
+        return other == this // short circuit if same object
+            || ((other instanceof ContactTag) // instanceof handles nulls
+            && contactId.equals(((ContactTag) other).getContactId()));
     }
 
     @Override

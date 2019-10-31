@@ -76,7 +76,6 @@ public class Note {
      * @return True if tag is successfully inserted.
      */
     public Boolean addTag(Tag tag) {
-        requireNonNull(tag.getTagId());
         return tags.add(tag);
     }
 

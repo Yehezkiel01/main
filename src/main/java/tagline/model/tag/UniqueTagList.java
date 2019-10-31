@@ -3,14 +3,13 @@ package tagline.model.tag;
 import static java.util.Objects.requireNonNull;
 import static tagline.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import tagline.model.tag.exceptions.DuplicateTagException;
 
 /**
@@ -19,7 +18,7 @@ import tagline.model.tag.exceptions.DuplicateTagException;
 public class UniqueTagList implements Iterable<Tag> {
     private final ObservableList<Tag> internalList = FXCollections.observableArrayList();
     private final ObservableList<Tag> internalUnmodifiableList =
-            FXCollections.unmodifiableObservableList(internalList);
+        FXCollections.unmodifiableObservableList(internalList);
 
     /**
      * Replaces the contents of the tag list with {@code replacement}.
@@ -46,16 +45,6 @@ public class UniqueTagList implements Iterable<Tag> {
     }
 
     /**
-     * Returns true if the tag list contains a {@code Tag} with some ID.
-     *
-     * @param tagId The tag ID to find
-     * @return True if a matching tag was found
-     */
-    public boolean containsTag(TagId tagId) {
-        return internalList.stream().anyMatch(t -> (t.getTagId().equals(tagId)));
-    }
-
-    /**
      * Returns true if the tag list contains a given {@code Tag}.
      *
      * @param toCheck The tag to find
@@ -66,45 +55,8 @@ public class UniqueTagList implements Iterable<Tag> {
         return internalList.stream().anyMatch(t -> t.equals(toCheck));
     }
 
-    /**
-     * Returns a list of {@code Tag}s whose name fully matches a given String.
-     *
-     * @param tagName The String to match
-     * @return A list containing all matching tags
-     */
-    public List<Tag> findTag(String tagName) {
-        requireNonNull(tagName);
-
-        List<Tag> result = new ArrayList<>();
-        /*
-        for (Tag tag : tagList) {
-            if (tag.getTagName().equals(tagName)) {
-                result.add(tag);
-            }
-        }*/
-
-        return Collections.unmodifiableList(result);
-    }
-
-    /**
-     * Returns the {@code Tag} whose ID matches the given parameter if any.
-     *
-     * @param tagId The ID to match
-     * @return An optional tag if there is a matching tag.
-     */
-    public Optional<Tag> findTag(TagId tagId) {
-        for (Tag tag : internalList) {
-            if (tag.getTagId().equals(tagId)) {
-                return Optional.of(tag);
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    /**
+     /**
      * Returns the {@code Tag} which are equals with {@code searchedTag}.
-     * This method will not check the id of the tag.
      *
      * @param searchedTag Tag to be compared.
      * @return An optional tag if there is a matching tag.

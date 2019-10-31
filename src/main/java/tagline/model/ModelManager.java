@@ -28,7 +28,6 @@ import tagline.model.note.ReadOnlyNoteBook;
 import tagline.model.tag.ReadOnlyTagBook;
 import tagline.model.tag.Tag;
 import tagline.model.tag.TagBook;
-import tagline.model.tag.TagId;
 import tagline.model.tag.TagManager;
 
 /**
@@ -184,6 +183,11 @@ public class ModelManager implements Model {
         contactManager.updateFilteredContactList(predicate);
     }
 
+    @Override
+    public ObservableList<Contact> getFilteredContactListWithPredicate(Predicate<Contact> predicate) {
+        return contactManager.getFilteredContactListWithPredicate(predicate);
+    }
+
     //=========== NoteBook ================================================================================
 
     @Override
@@ -248,7 +252,6 @@ public class ModelManager implements Model {
         noteManager.updateFilteredNoteList(predicate);
     }
 
-
     //=========== GroupBook ================================================================================
 
     @Override
@@ -298,6 +301,11 @@ public class ModelManager implements Model {
         groupManager.updateFilteredGroupList(predicate);
     }
 
+    @Override
+    public ObservableList<Group> getFilteredGroupListWithPredicate(Predicate<Group> predicate) {
+        return groupManager.getFilteredGroupListWithPredicate(predicate);
+    }
+
     //=========== TagBook ====================================================================================
 
     @Override
@@ -308,12 +316,10 @@ public class ModelManager implements Model {
             return foundTag.get();
         }
 
-        tag.setTagId(new TagId());
         tagManager.addTag(tag);
 
         return tag;
     }
-
     //========================================================================================================
 
     @Override

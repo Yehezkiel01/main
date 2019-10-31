@@ -1,7 +1,6 @@
 package tagline.model.tag;
 
 import static java.util.Objects.requireNonNull;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -39,13 +38,6 @@ public class TagManager implements TagModel {
         requireNonNull(tag);
         tagBook.addTag(tag);
     }
-
-    @Override
-    public Optional<Tag> findTag(TagId tagId) {
-        requireNonNull(tagId);
-        return tagBook.findTag(tagId);
-    }
-
     @Override
     public Optional<Tag> findTag(Tag tag) {
         requireNonNull(tag);

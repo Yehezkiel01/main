@@ -1,6 +1,5 @@
 package tagline.model.tag;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -26,16 +25,11 @@ public interface TagModel {
      * Adds the given tag.
      * {@code tag} must not already exist in the tag list.
      */
+
     void addTag(Tag tag);
 
     /**
-     * Finds tag by {@code id}.
-     */
-    Optional<Tag> findTag(TagId id);
-
-    /**
-     * Finds tag by tag object without checking its id.
-     * This method will be used for tag which has not been assigned any Id.
+     * Finds tag inside of TagModel.
      */
     Optional<Tag> findTag(Tag tag);
 }

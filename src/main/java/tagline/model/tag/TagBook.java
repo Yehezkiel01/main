@@ -58,7 +58,7 @@ public class TagBook implements ReadOnlyTagBook {
     //// tag-level operations
 
     /**
-     * Returns true if a tag with the same identity as {@code tag} exists in the address book.
+     * Returns true if a tag with the same identity as {@code tag} exists in the tag book.
      */
     public boolean hasTag(Tag tag) {
         requireNonNull(tag);
@@ -70,21 +70,11 @@ public class TagBook implements ReadOnlyTagBook {
      * The tag must not already exist in the address book.
      */
     public void addTag(Tag p) {
-        requireNonNull(p.getTagId());
-        assert (findTag(p.getTagId()).isEmpty()) : "Tag id is not unique";
         tags.addTag(p);
     }
 
     /**
-     * Finds all tags with ID equal to {@code tagId}.
-     * Returns an unmodifiable list.
-     */
-    public Optional<Tag> findTag(TagId tagId) {
-        return tags.findTag(tagId);
-    }
-
-    /**
-     * Finds a tag with ID equal to {@code tagId}.
+     * Finds a tag in {@code TagBook} which are equal to {@code tag}.
      */
     public Optional<Tag> findTag(Tag tag) {
         return tags.findTag(tag);
@@ -106,8 +96,8 @@ public class TagBook implements ReadOnlyTagBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TagBook // instanceof handles nulls
-                && tags.equals(((TagBook) other).tags));
+            || (other instanceof TagBook // instanceof handles nulls
+            && tags.equals(((TagBook) other).tags));
     }
 
     @Override

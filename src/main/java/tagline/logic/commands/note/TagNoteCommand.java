@@ -1,8 +1,6 @@
 package tagline.logic.commands.note;
 
 import static java.util.Objects.requireNonNull;
-import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_CONTENT;
-import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_TITLE;
 import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_TAG;
 import static tagline.model.note.NoteModel.PREDICATE_SHOW_ALL_NOTES;
 
@@ -16,7 +14,6 @@ import tagline.model.Model;
 import tagline.model.note.Note;
 import tagline.model.note.NoteId;
 import tagline.model.tag.Tag;
-import tagline.model.tag.TagId;
 
 /**
  * Tags a note with several tags.
@@ -41,7 +38,7 @@ public class TagNoteCommand extends NoteCommand {
         requireNonNull(noteId);
         requireNonNull(tags);
 
-        assert(tags.size() > 0) : "At least one tag to be provided.";
+        assert (tags.size() > 0) : "At least one tag to be provided.";
 
         this.noteId = noteId;
         this.tags = tags;
