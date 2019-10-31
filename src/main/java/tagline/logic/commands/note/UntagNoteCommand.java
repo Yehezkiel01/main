@@ -57,9 +57,9 @@ public class UntagNoteCommand extends NoteCommand {
         Note targetNote = noteFound.get();
 
         for (Tag tag : tags) {
-            Tag tagWithId = model.createOrFindTag(tag);
+            Tag registeredTag = model.createOrFindTag(tag);
 
-            model.untagNote(targetNote, tagWithId);
+            model.untagNote(targetNote, registeredTag);
         }
 
         model.updateFilteredNoteList(PREDICATE_SHOW_ALL_NOTES);

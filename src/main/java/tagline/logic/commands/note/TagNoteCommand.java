@@ -58,9 +58,9 @@ public class TagNoteCommand extends NoteCommand {
         Note targetNote = noteFound.get();
 
         for (Tag tag : tags) {
-            Tag tagWithId = model.createOrFindTag(tag);
+            Tag registeredTag = model.createOrFindTag(tag);
 
-            model.tagNote(targetNote, tagWithId);
+            model.tagNote(targetNote, registeredTag);
         }
 
         model.updateFilteredNoteList(PREDICATE_SHOW_ALL_NOTES);
