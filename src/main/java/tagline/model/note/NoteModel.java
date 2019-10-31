@@ -19,6 +19,11 @@ public interface NoteModel {
     Predicate<Note> PREDICATE_SHOW_ALL_NOTES = unused -> true;
 
     /**
+     * {@code Predicate} that always evaluate to false
+     */
+    Predicate<Note> PREDICATE_SHOW_NO_NOTES = unused -> false;
+
+    /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
     void setUserPrefs(ReadOnlyUserPrefs userPrefs);

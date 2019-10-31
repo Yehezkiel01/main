@@ -3,6 +3,7 @@ package tagline.logic.commands.note;
 import static java.util.Objects.requireNonNull;
 import static tagline.logic.parser.note.NoteCliSyntax.PREFIX_TAG;
 import static tagline.model.note.NoteModel.PREDICATE_SHOW_ALL_NOTES;
+import static tagline.model.note.NoteModel.PREDICATE_SHOW_NO_NOTES;
 
 import java.util.List;
 import java.util.Optional;
@@ -62,7 +63,10 @@ public class UntagNoteCommand extends NoteCommand {
             model.untagNote(targetNote, registeredTag);
         }
 
+        // Force update
+        model.updateFilteredNoteList(PREDICATE_SHOW_NO_NOTES);
         model.updateFilteredNoteList(PREDICATE_SHOW_ALL_NOTES);
+
         return new CommandResult(String.format(MESSAGE_UNTAG_NOTE_SUCCESS, targetNote), CommandResult.ViewType.NOTE);
     }
 
