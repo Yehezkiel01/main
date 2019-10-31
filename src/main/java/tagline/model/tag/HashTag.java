@@ -15,6 +15,10 @@ public class HashTag extends Tag {
         this.value = value;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
