@@ -45,7 +45,7 @@ public class ClearContactCommandTest {
     @Test
     public void execute_nonEmptyAddressBookAndNoteBook_success() {
         Model model = new ModelManager(getTypicalAddressBook(), getTypicalNoteBook(),
-            new GroupBook(),new TagBook(), new UserPrefs());
+            new GroupBook(), new TagBook(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalAddressBook(), getTypicalNoteBook(),
             new GroupBook(), new TagBook(), new UserPrefs());
         expectedModel.setAddressBook(new AddressBook());
