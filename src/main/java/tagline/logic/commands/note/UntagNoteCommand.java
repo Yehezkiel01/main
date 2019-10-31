@@ -55,18 +55,17 @@ public class UntagNoteCommand extends NoteCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_NOTE_INDEX);
         }
 
-        Note targetNote = noteFound.get();
-
         for (Tag tag : tags) {
             Tag registeredTag = model.createOrFindTag(tag);
 
-            model.untagNote(targetNote, registeredTag);
+            model.untagNote(noteId, registeredTag);
         }
 
         // Force update
         model.updateFilteredNoteList(PREDICATE_SHOW_NO_NOTES);
         model.updateFilteredNoteList(PREDICATE_SHOW_ALL_NOTES);
 
+        Note targetNote = noteFound.get();
         return new CommandResult(String.format(MESSAGE_UNTAG_NOTE_SUCCESS, targetNote), CommandResult.ViewType.NOTE);
     }
 
