@@ -165,7 +165,7 @@ Lists all contacts in the application.
 
 Format:
 
-`list`
+`contact list`
 
 ==== Display the profile of a person: `show`
 
