@@ -55,6 +55,13 @@ public class UntagNoteCommand extends NoteCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_NOTE_INDEX);
         }
 
+        // A round of validation on all tags.
+        for (Tag tag : tags) {
+            if (!tag.isValidInModel(model)) {
+                throw new CommandException(Messages.NON_EXISTING_TAG);
+            }
+        }
+
         for (Tag tag : tags) {
             Tag registeredTag = model.createOrFindTag(tag);
 
