@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="www.draw.io" modified="2019-11-11T10:16:47.887Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36" etag="cdT1ktG1oFLii4mjKazT" version="12.2.3" type="google" pages="2">
+<mxfile host="www.draw.io" modified="2019-11-11T10:35:30.465Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36" etag="lBf3xyuHd4SXaz83qMHd" version="12.2.3" type="google" pages="2">
   <diagram name="CreatingTagNoteCommand" id="9361dd3d-8414-5efd-6122-117bd74ce7a7">
-    <mxGraphModel dx="1936" dy="52" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1.5" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1497" dy="-191" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1.5" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -181,7 +181,7 @@
             <mxPoint x="720" y="1340" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="46f-yC3JbueHujFb0JCE-259" value="TagNoteCommand(index, tagList)" style="text;html=1;resizable=0;points=[];align=center;verticalAlign=middle;labelBackgroundColor=none;" parent="1" vertex="1" connectable="0">
+        <mxCell id="46f-yC3JbueHujFb0JCE-259" value="TagNoteCommand(noteId, tagList)" style="text;html=1;resizable=0;points=[];align=center;verticalAlign=middle;labelBackgroundColor=none;" parent="1" vertex="1" connectable="0">
           <mxGeometry x="500.21981859485004" y="1339.8378222126705" as="geometry">
             <mxPoint x="-9" y="8" as="offset"/>
           </mxGeometry>
