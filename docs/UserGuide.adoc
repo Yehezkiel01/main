@@ -554,7 +554,7 @@ Here is an example of tagging a note with a hash tag
 +
 image::ug_notetag_hashtag1.png[width="600"]
 
-. Next, send the command and you will be able to see the tag in the note view.
+. Send the command and you will be able to see the tag in the note view.
 +
 image::ug_notetag_hashtag2.png[width="600"]
 
@@ -578,6 +578,8 @@ Untags a note from one or more tags.
 Format:
 
 `note untag NOTE_ID [--t TAG]+`
+
+Similar with `note tag` command we can also untag a note with three types of tags.
 
 Example:
 
