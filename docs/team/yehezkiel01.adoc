@@ -5,79 +5,61 @@
 
 == PROJECT: TagLine
 
-== About the project
+== Overview
 
-My team of 5 software engineering students were tasked with enhancing a basic command line interface desktop addressbook application for our Software Engineering project.
+This portfolio is made to summarize my contribution in my CS2103T project.
 
-We chose to expand the application into a note management application with contact management capabilities called *TagLine*. In addition to the originally existing operations on contacts, this enhanced application allows users to record and list notes; create groups of contacts; and tag notes with relevant hashtags, contacts or groups.
+My team, which consists of 5 CS students, was asked to develop an address book application as part of our project
+assignment.
 
-Below is a screenshot of our project:
+After some discussion, we decided to morph the application into a note management app called as Tagline which utilizes
+several types of tags in order to helps its user in managing their notes efficiently.
 
-image:tagline_screenshot.png[]
+Following are the screenshot of Tagline:
 
-My role was to design the UI and write Java code, FXML and CSS for it. The following sections illustrate some more specific enhancements I have made to the UI, as well as some relevant documentation in the user and developer guides related to these enhancements.
+image:yehezkiel_screenshot.png[width=600]
 
 == Summary of contributions
 
-* *Major enhancement*: I added *autocomplete* for commands in TagLine.
-** What it does: When the user starts typing a command, a list of autocomplete suggestions will be shown below the command box.
-** Justification: This feature benefits new users by allowing them to understand all the possible commands in TagLine.
-** Highlights: I implemented `AutoCompleteNode` using a search tree, so that it only gets the most relevant suggestions. Additionally, using CSS, I applied a custom skin to the default ControlsFX autocomplete popup.
-** Credits: I used the ControlsFX library for the GUI implementation of the autocomplete box.
+* *Major enhancement*: I added `note tag` and `note untag` commands in TagLine.
+** What it does: This command allow user to tag its note with any of three types of tags in tagline.
+** Justification: This tagging feature along with the filtering `note list` command will help its user to manage
+their notes efficiently.
 
-* *Major enhancement*: I added *user prompting* for commands in TagLine.
-** What it does: TagLine can detect if a command entered by the user is missing some information. For example, a user may forget to indicate the name when adding a contact. In that case, the TagLine chatbot will ask the user for the name of the contact.
-+
-As an extension, using the same framework, TagLine can request confirmation when performing major changes like clearing the contact or note list.
-** Justification: This feature benefits inexperienced users by allowing them to easily fix mistakes without having to retype entire commands. Also, it allows for an alternative method of inputting commands field by field, which may be preferable to some users.
-** Highlights: This feature required implementing additional interactions between the `Ui` and the `Logic` components, which was done using an intermediate class to pass prompts. I also had to design a new program flow for the `Ui` to handle user prompts.
-+
-To increase user-friendliness, I included messages to tell the user when they are being prompted, and disabled autocomplete when the user enters the response.
-+
-For future commands, this feature is easily extensible as it only requires the new `Parser` to throw an exception requesting some prompts.
+* *Major enhancement*: I implemented `Hash Tag` model.
+** What it does: Hash Tag is one of the three types of tags which helps its user to categorize their notes with topics.
 
-* *Minor enhancement*: I added the GUI views for listing notes, viewing a single group and listing groups. I also refactored the original contact list to be able to hide empty fields.
+* *Minor enhancement*: I refactored `contact model` from address book
+** What it does: Tagline has an address book integrated inside of it. Therefore, we decided to reuse some part of AB3.
+However, we need to do some minor tweak so that it suits our app well.
 
-* *Minor enhancement*: I implemented a chat interface for communicating with the user.
-** Credits: I reused my code from my individual project to build the chat interface.
-
-* *Code contributed*: [https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=f12-3&sort=groupTitle&sortWithin=title&since=2019-09-06&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=tanlk99&tabRepo=AY1920S1-CS2103T-F12-3%2Fmain%5Bmaster%5D[RepoSense report]]
+* *Code contributed*: [https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=&sort=groupTitle&sortWithin=title&since=2019-09-06&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=Yehezkiel01&tabRepo=AY1920S1-CS2103T-F12-3%2Fmain%5Bmaster%5D[RepoSense report]]
 
 * *Other contributions*:
 
 ** Project management:
-*** Handled releases `v1.1` - `v1.3` (3 releases) on GitHub
-*** Setup Coveralls
-** Enhancements to existing features:
-*** Wrote GUI tests to test new and old components of the UI, increasing coverage for the `tagline.ui` package to 65.6%
+*** Set up milestone and allocate issues.
+*** Setup Netlify
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S1-CS2103T-F12-3/main/pull/140[#140], https://github.com/AY1920S1-CS2103T-F12-3/main/pull/68[#68], https://github.com/AY1920S1-CS2103T-F12-3/main/pull/105[#105]
-*** Reported bugs and suggestions for other teams: https://github.com/AY1920S1-CS2103T-W13-1/main/issues/96[#96], https://github.com/AY1920S1-CS2103T-W13-1/main/issues/95[#95]
-** Tools:
-*** Integrated ControlsFX to the project for the autocomplete feature.
-*** Integrated TestFX to the team repo to write and perform GUI tests.
-*** Integrated Hamcrest to the team repo to write GUI tests.
+*** Actively asked in forums and slack to clarify my doubts and others:
+https://github.com/nus-cs2103-AY1920S1/forum/issues/119[#119]
 
 == Contributions to the User Guide
 
 |===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|_Below are parts which I contributed to in the User Guide_.
 |===
 
-include::../UserGuide.adoc[tag=learningtagline]
+include::../UserGuide.adoc[tag=tagging1]
+include::../UserGuide.adoc[tag=tagging2]
 
 == Contributions to the Developer Guide
 
 |===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|_Below are parts which I contributed to in the Developer Guide Guide._
 |===
 
-include::../DeveloperGuide.adoc[tag=designui]
-
----
-
-include::../DeveloperGuide.adoc[tag=userprompting1]
-
-For the full sequence diagram, see the developer guide.
-
-include::../DeveloperGuide.adoc[tag=userprompting2]
+include::../DeveloperGuide.adoc[tag=yehez1]
+include::../DeveloperGuide.adoc[tag=yehez2]
+include::../DeveloperGuide.adoc[tag=yehez3]
+include::../DeveloperGuide.adoc[tag=yehez4]
