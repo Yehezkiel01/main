@@ -557,12 +557,12 @@ image::GroupSequenceDiagram.png[]
  the members in `Group`.
 // end::groupcontacts[]
 
-=== [Proposed] Tagging feature
+=== Tagging feature
 ==== Description
 
 The user can tag a note with many tags by using <<UserGuide#note-tag, `note tag`>> command.
 
-==== Proposed Implementation
+==== Implementation
 
 In order to add tagging feature we will need to take a look at two processes, which are the tag command creation and the
  execution of the command.
@@ -575,7 +575,7 @@ Given below is an example scenario when a user tag a note with 2 tags.
 
 **Step 1:** The user command will be passed to `TaglineParser`, all the way to the `TagNoteParser`.
 
-image::CreatingTagNoteCommand.png[]
+image::CreatingTagNoteCommand.png[width=600]
 
 **Step 2:** `NoteParserUtil` will be used to create a `noteId` object.
 
