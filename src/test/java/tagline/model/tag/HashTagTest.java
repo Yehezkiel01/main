@@ -1,3 +1,5 @@
+// @@author yehezkiel01
+
 package tagline.model.tag;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -16,4 +18,3 @@ public class HashTagTest {
         assertTrue(HashTag.isValidValue(normalHashTag));
     }
 }
-
