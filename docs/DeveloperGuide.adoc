@@ -975,30 +975,6 @@ These instructions only provide a starting point for testers to work on; testers
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-_{ more test cases ... }_
-
-=== Deleting a person
-
-. Deleting a person while all persons are listed
-
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-.. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-.. Test case: `delete 0` +
-   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
-   Expected: Similar to previous.
-
-_{ more test cases ... }_
-
-=== Saving data
-
-. Dealing with missing/corrupted data files
-
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
-
-_{ more test cases ... }_
-
 === Autocomplete
 
 . Looking at autocomplete options
@@ -1115,3 +1091,74 @@ The autocomplete menu will only pop up *after* the user types in the command box
    *Expected*: Group _ao3_ is deleted and all groups remaining groups (if any) are being displayed, contact of contactID 1 still exists in Addressbook. Status message indicates "Success! now showing all groups.".
 .. *Test case*: `group delete archive of our own` +
    *Expected*: UI is unchanged. Status message indicates "GroupNames should not contain whitespace, and it should not be blank. Alphanumeric, dash, and underscores are acceptable".
+
+=== Tagging a note
+
+. *Prerequisites*: Enter `note list` command to view all notes. Ensure that note with id `1` exists. Otherwise,
+take any other note or create one and replace all id `1` with the chosen note's id in each of the following test cases.
+
+. Tagging a note with hash tag.
+.. *Prerequisites*: Note with id `1` is not tagged with `#any topic`, `#topic1`, `#topic2`, and `#topic3`.
+.. *Test case*: `note tag 1 --t #any topic` +
+   *Expected*: Note successfully tagged with `#any topic` which should be reflected in the response message and in
+the note view.
+.. *Test case*: Enter `note tag 1 --t #any topic` twice +
+   *Expected*: The first time we enter the command, it should succeed normally as described in the previous test case
+whereas the second time we enter the same command, we would get an error message saying that the tag has been tagged
+to the note.
+.. *Test case*: `note tag 1 --t #topic1 --t #topic2 --t #topic3` +
+   *Expected*: Note successfully tagged with the three hash tag which should be reflected in the response message and in
+the note view.
+.. *Test case*: Enter `note tag 1 --t #topic1 --t #topic2` then enter `note tag 1 --t #topic1 --t #topic3` +
+   *Expected*: The first time we enter the command, it should succeed normally as described in the previous test case
+whereas the second time we enter the next command, we would get an error message saying that there are tags which have
+been tagged to the note. In this case, it is `#topic1`
+.. *Test case*: Enter `note tag 1 --t #0123456789012345678901234567890` +
+   *Expected*: We will get an error message saying that the maximum character for hash tag is 30.
+
+. Tagging a note with contact tag
+
+. Tagging a note with group tag
+
+. Tagging a note with all types of tag
+.. *Prerequisites*: There is a contact with id `1`, otherwise you may choose any other existing contact id. There is a
+group with name `BTS`, otherwise you may create one. Note
+with id `1` is not tagged with `#topic`, `@00001` and `%BTS`.
+.. *Test case*: `note tag 1 --t #topic --t @00001 --t %BTS` +
+   *Expected*: Note successfully tagged with the three hash tag which should be reflected in the response message and in
+the note view.
+
+=== Untagging a note
+
+. *Prerequisites*: Enter `note list` command to view all notes. Ensure that note with id `1` exists. Otherwise,
+take any other note or create one and replace all id `1` with the chosen note's id in each of the following test cases.
+. Untagging a note with hash tag.
+.. *Prerequisites*: Note with id `1` is tagged with `#any topic`, `#topic1`, `#topic2`, and `#topic3`.
+.. *Test case*: `note untag 1 --t #any topic` +
+   *Expected*: Note successfully untagged with `#any topic` which should be reflected in the response message and in
+the note view.
+.. *Test case*: Enter `note untag 1 --t #any topic` twice +
+   *Expected*: The first time we enter the command, it should succeed normally as described in the previous test case
+whereas the second time we enter the same command, we would get an error message saying that the tag is not tagged
+to the note.
+.. *Test case*: `note untag 1 --t #topic1 --t #topic2 --t #topic3` +
+   *Expected*: Note successfully untagged with the three hash tag which should be reflected in the response message
+and in the note view.
+.. *Test case*: Enter `note untag 1 --t #topic1 --t #topic2` then enter `note tag 1 --t #topic1 --t #topic3` +
+   *Expected*: The first time we enter the command, it should succeed normally as described in the previous test case
+whereas the second time we enter the next command, we would get an error message saying that there are tags which are
+not tagged to the note. In this case, it is `#topic1`
+.. *Test case*: Enter `note untag 1 --t #0123456789012345678901234567890` +
+   *Expected*: We will get an error message saying that the maximum character for hash tag is 30.
+
+. Untagging a note with contact tag
+
+. Untagging a note with group tag
+
+. Untagging a note with all types of tag
+.. *Prerequisites*: There is a contact with id `1`, otherwise you may choose any other existing contact id. There is a
+group with name `BTS`, otherwise you may create one. Note
+with id `1` is tagged with `#topic`, `@00001` and `%BTS`.
+.. *Test case*: `note untag 1 --t #topic --t @00001 --t %BTS` +
+   *Expected*: Note successfully untagged with the three hash tag which should be reflected in the response message
+and in the note view.
